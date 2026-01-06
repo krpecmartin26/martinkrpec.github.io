@@ -1,37 +1,75 @@
-/* Globální tmavý styl */
-body { 
-    background-color: #0a192f; /* Tmavé pozadí */
-    color: #ccd6f6; /* Světlé písmo */
+/* Globální styl webu */
+body {
+    background-color: #1a1a1a; /* Antracitové pozadí */
+    color: #e0e0e0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-section { 
-    background: #112240; /* Trochu světlejší tmavá pro sekce */
-    color: #8892b0;
-    box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+/* Centrování a vzhled sekcí */
+section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: #222222; /* Decentní kontrast karet */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
-h2 { color: #64ffda; border-bottom: 2px solid #64ffda; } /* Akcentní barva pro nadpisy */
-
-header { background: #0a192f; border-bottom: 1px solid #005f87; }
-
-/* Animace loga */
-.logo-path {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: drawLogo 3s ease-in-out forwards;
+/* Nadpisy v Siemens modré */
+h2 {
+    color: #005f87; 
+    border-bottom: 2px solid #005f87;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.path-k {
-    animation-delay: 0.5s; /* K se začne kreslit o kousek později */
+h3 {
+    color: #ffffff;
+    margin-top: 0;
 }
 
-@keyframes drawLogo {
-    to { stroke-dashoffset: 0; }
+/* Úprava seznamů a textu */
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-/* Úprava skill tagů pro tmavý režim */
+li {
+    margin-bottom: 15px;
+}
+
+/* Skill tagy - moderní modrý vzhled */
 .skill-tag {
-    background: transparent;
-    border: 1px solid #64ffda;
-    color: #64ffda;
+    background: rgba(0, 95, 135, 0.1);
+    border: 1px solid #005f87;
+    color: #005f87;
+    padding: 6px 14px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: #005f87;
+    color: #ffffff;
+}
+
+/* Animace Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
 }

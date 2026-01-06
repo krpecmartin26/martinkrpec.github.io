@@ -10,26 +10,29 @@
 </head>
 <body>
 
-<div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0a192f; display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.5s ease;">
+<div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.5s ease;">
     <div style="text-align: center;">
         <div class="logo-wrapper">
             <svg width="150" height="150" viewBox="0 0 100 100">
                 <path class="logo-path path-m" 
-                      d="M10 80 V20 L35 50 L60 20 V80" 
-                      fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                      d="M10 80 V20 L30 50 L50 20 V80 M12 80 V20 M48 80 V20" 
+                      fill="none" stroke="#000000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
                 <path class="logo-path path-k" 
-                      d="M60 20 V80 M60 50 L85 20 M60 50 L85 80" 
-                      fill="none" stroke="#005f87" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                      d="M55 20 V80 M55 50 L85 20 M55 50 L85 80" 
+                      fill="none" stroke="#005f87" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </div>
-        <div id="binary-loader" style="color: #005f87;">010101010101</div>
-        <p style="margin-top: 10px; font-family: sans-serif; font-size: 11px; color: #ccd6f6; letter-spacing: 4px; font-weight: bold;">SYSTEM_START_SEQUENCE</p>
+        <div id="binary-loader" style="color: #005f87; margin-top: 20px;">010101010101</div>
+        <p style="margin-top: 10px; font-family: sans-serif; font-size: 11px; color: #888; letter-spacing: 4px; font-weight: bold;">INITIALIZING SYSTEM...</p>
     </div>
 </div>
 
 <header>
-    <h1>Martin Krpec</h1>
-    <p>PLC Programmer | WinCC Unified & JavaScript Specialist</p>
+    <header style="padding: 5rem 2rem; text-align: center; background: #1a1a1a; border-bottom: 1px solid #333;">
+    <h1 style="font-size: 3.5rem; color: #ffffff; margin: 0; letter-spacing: -1px;">Martin Krpec</h1>
+    <div style="width: 50px; height: 4px; background: #005f87; margin: 20px auto;"></div>
+    <p style="font-size: 1.1rem; color: #005f87; font-weight: bold; letter-spacing: 3px; text-transform: uppercase;">PLC Programmer | HMI Developer</p>
+</header>
 </header>
 
 <section id="about" class="reveal">
@@ -97,5 +100,13 @@
     </div>
 
     <script src="script.js"></script>
+
+    <footer id="contact" style="background-color: #111; padding: 60px 20px; text-align: center;">
+    <h2 style="color: #005f87; border-color: #005f87;">Contact Me</h2>
+    <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px;">
+        <a href="https://www.linkedin.com/in/martin-krpec/" target="_blank" style="color: #005f87; font-size: 35px;"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:krpecmartin26@gmail.com" style="color: #005f87; font-size: 35px;"><i class="fas fa-envelope"></i></a>
+        </div>
+</footer>
 </body>
 </html>
