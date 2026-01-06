@@ -7,7 +7,7 @@ body {
 }
 /* Celá lišta */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 }
 
 /* Pozadí lišty */
@@ -17,7 +17,7 @@ body {
 
 /* Ten posuvník (jezdec) */
 ::-webkit-scrollbar-thumb {
-    background: #994099;
+    background: #005f87;
     border-radius: 5px;
 }
 
