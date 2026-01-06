@@ -27,7 +27,7 @@
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transition: all 1.2s ease-out;
 }
 
 /* Stav po zobrazení: viditelný a na svém místě */
@@ -162,15 +162,15 @@ function closeModal() {
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
+            // Pokud je sekce vidět, přidej třídu show
             entry.target.classList.add('show');
         } else {
-            // Pokud chceš, aby to mizelo a znovu se objevovalo při každém scrollu, 
-            // odmaž řádek níže. Jinak se to animuje jen jednou.
-            // entry.target.classList.remove('show');
+            // TADY JE TA ZMĚNA: Pokud sekce zmizí, třídu show zase odeber
+            entry.target.classList.remove('show');
         }
     });
 }, {
-    threshold: 0.1 // Animace se spustí, když je vidět alespoň 10 % sekce
+    threshold: 0.1 
 });
 
 // Najde všechny prvky s třídou .reveal a začne je sledovat
