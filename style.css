@@ -151,9 +151,9 @@ li {
 }
 
 .skill-tag:hover {
-    background: #994099 !important; /* Tvoje fialová */
+    background: #0077b5 !important; 
     color: white !important;
-    transform: scale(1.2) translateY(-5px); /* Zvětší se a poskočí nahoru */
+    transform: scale(1.1) translateY(-2px); /* Zvětší se a poskočí nahoru */
     box-shadow: 0 5px 15px rgba(153, 64, 153, 0.4);
     border-color: #ffffff;
 }
