@@ -73,34 +73,38 @@ li {
     opacity: 1;
     transform: translateY(0);
 }
-/* Kontejner pro tooltip */
-.tooltip {
+/* Základní styl odkazu (ikony) */
+.tooltip-link {
     position: relative;
+    color: #005f87; /* Siemens modrá */
+    font-size: 35px;
+    text-decoration: none;
+    transition: all 0.3s ease;
     display: inline-block;
 }
 
-/* Text tooltipu (schovaný) */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 100px;
-    background-color: #005f87;
+/* Skrytá bublina s textem */
+.tooltip-box {
+    visibility: hidden; /* Tohle zajistí, že text není vidět */
+    opacity: 0;
+    width: 90px;
+    background-color: #333; /* Tmavé pozadí bubliny */
     color: #fff;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 5px;
     padding: 5px 0;
     position: absolute;
-    z-index: 1;
-    bottom: 125%; /* Zobrazí se nad ikonou */
+    z-index: 10;
+    bottom: 150%; /* Pozice nad ikonou */
     left: 50%;
-    margin-left: -50px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    font-size: 12px;
+    transform: translateX(-50%);
+    font-size: 14px;
     font-family: sans-serif;
+    transition: opacity 0.3s, bottom 0.3s;
 }
 
-/* Šipka pod tooltipem */
-.tooltip .tooltiptext::after {
+/* Šipka pod bublinou */
+.tooltip-box::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -108,18 +112,18 @@ li {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #005f87 transparent transparent transparent;
+    border-color: #333 transparent transparent transparent;
 }
 
-/* Zobrazení při najetí myší */
-.tooltip:hover .tooltiptext {
+/* Zobrazení při najetí myší na ikonu */
+.tooltip-link:hover .tooltip-box {
     visibility: visible;
     opacity: 1;
+    bottom: 130%; /* Bublina jemně popojede nahoru */
 }
 
-/* Jemné zvětšení ikony při najetí */
-.tooltip a:hover {
+/* Zvětšení ikony při najetí */
+.tooltip-link:hover {
+    color: #0077b5; /* Mírná změna barvy při najetí */
     transform: scale(1.2);
-    display: inline-block;
-    transition: transform 0.2s;
 }
