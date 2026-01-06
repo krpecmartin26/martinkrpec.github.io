@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martin Krpec | PLC Programmer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
 <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.5s ease;">
     <div style="text-align: center;">
-        <svg width="150" height="150" viewBox="0 0 100 100">
-            <path class="logo-path" d="M20 80 V20 L50 60 L80 20 V80 M50 60 L80 80" fill="none" stroke="#994099" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+        <div class="logo-wrapper">
+            <svg width="150" height="150" viewBox="0 0 100 100">
+                <path class="logo-path" d="M20 80 V20 L50 60 L80 20 V80 M50 60 L80 80" fill="none" stroke="#994099" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
         <div id="binary-loader">010101010101</div>
         <p style="margin-top: 10px; font-family: sans-serif; font-size: 11px; color: #994099; letter-spacing: 4px; font-weight: bold;">CONNECTING TO PLC...</p>
     </div>
@@ -25,12 +28,61 @@
 
 <section id="about" class="reveal">
     <h2>About me</h2>
-    <p>I am working on the development and commissioning of automation systems using Siemens PLC and HMI platforms.</p>
+    <p>I am working on the development and commissioning of automation systems using Siemens PLC and HMI platforms, including system visualization, PLC programming, testing, and on-site startup.</p>
 </section>
 
-<div id="imageModal" onclick="closeModal()" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; cursor: pointer;">
-    <img id="modalImg" style="max-width: 90%; max-height: 90%; border: 3px solid white; border-radius: 5px;">
-</div>
+<section id="experience" class="reveal">
+    <h2>Job experience</h2>
+    <ul>
+        <li><strong>ICE Industrial services</strong> (05/2025 – Present)
+            <p>SW developer</p>
+        </li>
+        <li><strong>Bonatrans Group</strong> (05/2021 – 04/2025)
+            <p>Fault diagnosis and troubleshooting. Device optimization software. Cooperation on new projects. Responsibility for selecting and ordering spare parts.</p>
+        </li>
+    </ul>
+</section>
 
-<script src="script.js"></script> </body>
-</html>
+<section id="project-exp" class="reveal">
+    <h2>Project experience</h2>
+    <ul style="list-style-position: inside; padding-left: 0;">
+        <li style="margin-bottom: 15px;">
+            <strong>ICE Industrial services</strong> (08/2025 – Present)
+            <p style="margin: 5px 0 0 20px;">Valeo Rakovník</p>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <strong>ICE Industrial services</strong> (06/2025 – 07/2025)
+            <p style="margin: 5px 0 0 20px;">Coral printing concrete machine</p>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <strong>ICE Industrial services</strong> (05/2025)
+            <p style="margin: 5px 0 0 20px;">Lear</p>
+        </li>
+    </ul>
+</section>
+
+<section id="projects" class="reveal">
+    <h2>My Projects</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <div style="max-width: 350px; border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #fff;">
+            <h3>Seat assembly - HMI</h3>
+            <img src="Lear_01.png" onclick="openModal(this.src)" style="width: 100%; border-radius: 5px; cursor: pointer;" alt="HMI Design">
+            <p>Visualization of a seat assembly line. Focused on intuitive UI and dynamic status indicators.</p>
+        </div>
+        <div style="max-width: 350px; border: 1px solid #ddd; padding: 10px; border-radius: 8px; background: #fff;">
+            <h3>Seat assembly - PLC</h3>
+            <img src="Lear_02.png" onclick="openModal(this.src)" style="width: 100%; border-radius: 5px; cursor: pointer;" alt="PLC Cabinet">
+            <p>Control system architecture and cabinet layout for the assembly process.</p>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="reveal">
+    <h2>Technology</h2>
+    <div class="skill-tag">TIA Portal</div>
+    <div class="skill-tag">Siemens STEP7</div>
+    <div class="skill-tag">WinCC Unified</div>
+    <div class="skill-tag">JavaScript</div>
+    <div class="skill-tag">S7-1500 / S7-1200 / S7-300</div>
+    <div class="skill-tag">PROFINET</div>
+</section>
