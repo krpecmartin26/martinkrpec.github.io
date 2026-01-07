@@ -262,21 +262,43 @@ ul {
 
 /* --- ZOOM MODAL STYLY --- */
 
-/* Přidej nebo uprav toto ve svém CSS souboru */
+/* =========================================
+   CSS PRO MODÁLNÍ OBRÁZEK
+   ========================================= */
+
+/* Ujisti se, že kontejner má nastavenou výšku, aby se měl obrázek k čemu vztahovat */
 #modal-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* ... vaše existující styly pro flex centrování ... */
+    width: 100%;
+    height: 100%; /* Kontejner musí vyplnit modální okno */
     overflow: hidden;
-    /* Zajistí, že startovní pozice je střed */
 }
 
 #modalImg {
-    /* Důležité: transformace se musí dít od středu */
-    transform-origin: center center; 
-    transition: transform 0.1s ease-out; /* Volitelné: pro hladší pohyb */
+    /* --- EXISTUJÍCÍ STYLY PRO ZOOM (NEUMAZÁVAT) --- */
+    transform-origin: center center;
+    transition: transform 0.1s ease-out;
+    /* ----------------------------------------------- */
+
+
+    /* --- NOVÉ STYLY PRO OPTIMÁLNÍ VELIKOST PŘI OTEVŘENÍ --- */
+
+    /* 1. Omez šířku i výšku na 100% kontejneru */
     max-width: 100%;
     max-height: 100%;
+
+    /* 2. "Magic" vlastnost, která zajistí, že se obrázek
+       vždy vejde celý dovnitř, aniž by se deformoval poměr stran. */
+    object-fit: contain;
+
+    /* 3. Reset přirozených rozměrů, aby 'object-fit' fungoval správně */
+    width: auto;
+    height: auto;
+    
+    /* Volitelné: pokud chcete, aby obrázek nebyl nalepený úplně na krajích okna,
+       můžete nastavit max-height/width třeba na 95% nebo 90vh */
+    /* max-height: 95vh; */ 
+    /* max-width: 95vw; */
 }
 
 /* Třída, kterou JS přidá, když držíš myš */
