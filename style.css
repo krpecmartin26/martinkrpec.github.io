@@ -262,37 +262,21 @@ ul {
 
 /* --- ZOOM MODAL STYLY --- */
 
-/* Kontejner, který ohraničuje viditelnou oblast obrázku */
+/* Přidej nebo uprav toto ve svém CSS souboru */
 #modal-image-container {
-    width: 90%;
-    height: 80%;
-    max-width: 1400px;
-    max-height: 900px;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    
-    /* TOTO JSME ZMĚNILI: */
-    margin: auto;     /* Vycentruje kontejner na stránce */
-    background: #000; /* Černé pozadí */
-    
-    /* TOTO MUSÍ PRYČ (Flexbox rozbíjí souřadnice zoomu): */
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    
-    cursor: zoom-in;
+    /* Zajistí, že startovní pozice je střed */
 }
 
-/* Samotný obrázek */
 #modalImg {
+    /* Důležité: transformace se musí dít od středu */
+    transform-origin: center center; 
+    transition: transform 0.1s ease-out; /* Volitelné: pro hladší pohyb */
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain;
-    transform-origin: 0 0; /* Důležité: počítá pozici od rohu */
-    transition: transform 0.1s ease-out; /* Plynulý pohyb */
-    user-select: none; /* Zákaz označování textu */
-    pointer-events: none; /* Kliknutí propadnou na kontejner */
-    will-change: transform; /* Optimalizace výkonu */
 }
 
 /* Třída, kterou JS přidá, když držíš myš */

@@ -117,28 +117,36 @@ function updateTransform() {
 }
 
 function checkBoundaries() {
-    const rect = zoomContainer.getBoundingClientRect();
-    const contentWidth = rect.width * scale;
-    const contentHeight = rect.height * scale;
-
-    // 1. Osa X (Vodorovně)
-    if (contentWidth > rect.width) {
-        // Pokud je obrázek širší než okno -> Povolit posun, ale jen k okrajům
-        if (pannedX > 0) pannedX = 0; // Levý okraj
-        if (pannedX < rect.width - contentWidth) pannedX = rect.width - contentWidth; // Pravý okraj
-    } else {
-        // Pokud je obrázek užší než okno -> Vycentrovat ho
-        pannedX = (rect.width - contentWidth) / 2;
-    }
+    const rect = zoomContainer.getBoundingClientRect(); // Rozměry okna
     
-    // 2. Osa Y (Svisle)
-    if (contentHeight > rect.height) {
-        // Pokud je obrázek vyšší než okno -> Povolit posun, ale jen k okrajům
-        if (pannedY > 0) pannedY = 0; // Horní okraj
-        if (pannedY < rect.height - contentHeight) pannedY = rect.height - contentHeight; // Spodní okraj
+    // OPRAVA: Musíme vzít skutečnou šířku obrázku, ne šířku okna
+    // zoomImg.offsetWidth je reálná velikost obrázku bez zoomu
+    const currentW = zoomImg.offsetWidth * scale;
+    const currentH = zoomImg.offsetHeight * scale;
+
+    // --- 1. Osa X (Vodorovně) ---
+    if (currentW > rect.width) {
+        // Obrázek je širší než okno -> Povolit posun, ale jen po okraje
+        // Vypočítáme maximální posun od středu (limit)
+        const maxTranslateX = (currentW - rect.width) / 2;
+
+        if (pannedX > maxTranslateX) pannedX = maxTranslateX;   // Levý okraj
+        if (pannedX < -maxTranslateX) pannedX = -maxTranslateX; // Pravý okraj
     } else {
-        // Pokud je obrázek nižší než okno -> Vycentrovat ho
-        pannedY = (rect.height - contentHeight) / 2;
+        // Obrázek je užší než okno -> Vycentrovat (posun 0)
+        pannedX = 0;
+    }
+
+    // --- 2. Osa Y (Svisle) ---
+    if (currentH > rect.height) {
+        // Obrázek je vyšší než okno -> Povolit posun po okraje
+        const maxTranslateY = (currentH - rect.height) / 2;
+
+        if (pannedY > maxTranslateY) pannedY = maxTranslateY;   // Horní okraj
+        if (pannedY < -maxTranslateY) pannedY = -maxTranslateY; // Spodní okraj
+    } else {
+        // Obrázek je nižší než okno -> Vycentrovat (posun 0)
+        pannedY = 0;
     }
 }
 
