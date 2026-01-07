@@ -34,7 +34,7 @@ function hidePreloader() {
 
 window.addEventListener('load', () => {
     // Čekáme 2.5 sekundy při startu, aby se logo stihlo vykreslit
-    setTimeout(hidePreloader, 2000);
+    setTimeout(hidePreloader, 1800);
 });
 
 /* =========================================
@@ -94,7 +94,52 @@ function openModal(imgSrc) {
 function closeModal() {
     clearInterval(modalInterval);
     document.getElementById("imageModal").style.display = "none";
+    
+    // TOTO JE NOVÉ: Ujistíme se, že se obrázek od-zoomuje
+    document.getElementById("modalImg").classList.remove('zoomed');
 }
+/* =========================================
+   LOGIKA PRO MODÁLNÍ OKNO (HOLD TO ZOOM)
+   ========================================= */
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImg");
+
+// 1. Zavírání kliknutím na černé pozadí
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// 2. Zoom držením myši (mousedown/mouseup)
+modalImg.addEventListener('mousedown', function(e) {
+    e.stopPropagation(); // Aby se nezavřelo okno
+    e.preventDefault();  // Aby se obrázek nezačal přetahovat
+    this.classList.add('zoomed');
+});
+
+modalImg.addEventListener('mouseup', function(e) {
+    e.stopPropagation();
+    this.classList.remove('zoomed');
+});
+
+// 3. Pojistka: Když ujedu myší pryč z obrázku, zrušit zoom
+modalImg.addEventListener('mouseleave', function(e) {
+    this.classList.remove('zoomed');
+});
+
+// 4. Podpora pro dotykové displeje (mobil)
+modalImg.addEventListener('touchstart', function(e) {
+    e.stopPropagation();
+    e.preventDefault(); 
+    this.classList.add('zoomed');
+});
+
+modalImg.addEventListener('touchend', function(e) {
+    e.stopPropagation();
+    this.classList.remove('zoomed');
+});
+
 
 /* =========================================
    4. SCROLL SPY & PLYNULÝ SCROLL

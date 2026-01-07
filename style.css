@@ -256,3 +256,22 @@ ul {
     color: #3498db;
     transform: scale(1.1);
 }
+/* =========================================
+   10. MODÁLNÍ OKNO - HOLD TO ZOOM
+   ========================================= */
+
+#modalImg {
+    cursor: zoom-in; /* Ikona lupy */
+    /* Zrychlili jsme čas z 0.3s na 0.15s pro okamžitou reakci */
+    transition: transform 0.15s ease-out; 
+    transform-origin: center center;
+    /* Zabrání označování obrázku jako textu při držení */
+    user-select: none; 
+    -webkit-user-select: none;
+}
+
+#modalImg.zoomed {
+    transform: scale(2); 
+    cursor: grabbing; /* Ikona "držící ruky" (volitelné) */
+    z-index: 10001;
+}
