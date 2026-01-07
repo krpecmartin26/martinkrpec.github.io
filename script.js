@@ -54,37 +54,23 @@ function openModal(imgSrc) {
     const modalImg = document.getElementById("modalImg");
     const loader = document.getElementById("modalLoader");
     const binaryCont = document.getElementById("modal-binary");
-
-    // Reset stavu okna
-    modal.style.display = "flex";     // Ukázat okno
-    loader.style.display = "block";   // Ukázat loader s logem
-    modalImg.style.display = "none";  // Schovat starý obrázek
     
-    // Nastavit cestu k obrázku (začne stahování)
+    // Najdeme SVG v modálním okně
+    const modalSvg = loader.querySelector('svg');
+
+    modal.style.display = "flex";
+    loader.style.display = "block";
+    modalImg.style.display = "none";
     modalImg.src = imgSrc;
 
-    // Spustit animaci 0 a 1 pod logem v okně
-    if (binaryCont) {
-        modalInterval = setInterval(() => {
-            binaryCont.innerText = generateBinary(8);
-        }, 80);
+    // RESTART ANIMACE LOGA V MODÁLU
+    if (modalSvg) {
+        modalSvg.classList.remove("animate-logo"); // Reset
+        void modalSvg.offsetWidth; // Vynutí překreslení (trik prohlížeče)
+        modalSvg.classList.add("animate-logo");    // Spustí animaci znovu
     }
 
-    // Až se obrázek úspěšně načte:
-    modalImg.onload = function() {
-        clearInterval(modalInterval);     // Stop číslům
-        loader.style.display = "none";    // Schovat loader
-        modalImg.style.display = "block"; // Ukázat obrázek
-    };
-
-    // Pokud obrázek neexistuje (chyba v názvu):
-    modalImg.onerror = function() {
-        clearInterval(modalInterval);
-        if (binaryCont) {
-            binaryCont.innerText = "ERROR: FILE NOT FOUND";
-            binaryCont.style.color = "#ff4444";
-        }
-    };
+    // ... zbytek tvého kódu (interval pro čísla, onload atd.) ...
 }
 
 function closeModal() {

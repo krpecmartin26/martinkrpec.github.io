@@ -46,14 +46,32 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
-/* Animace samotného kreslení čar */
+/* Animace kreslení - logo se vykreslí zleva doprava */
 @keyframes drawLines {
-    from {
-        stroke-dashoffset: 300; /* Skryje celou čáru */
+    0% {
+        stroke-dashoffset: 300; /* Neviditelné */
+        opacity: 0;
     }
-    to {
-        stroke-dashoffset: 0;   /* Vykreslí ji celou */
+    10% {
+        opacity: 1;
     }
+    100% {
+        stroke-dashoffset: 0;   /* Vykreslené */
+        opacity: 1;
+    }
+}
+/* Třída, kterou budeme dynamicky přidávat */
+.animate-logo path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawLines 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Třída, kterou budeme dynamicky přidávat */
+.animate-logo path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: drawLines 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Třída, kterou dostane logo pro efekt kreslení */
