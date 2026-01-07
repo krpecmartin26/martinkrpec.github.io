@@ -36,11 +36,11 @@ html {
 /* =========================================
    3. ANIMACE LOGA (Kreslení)
    ========================================= */
-   
-/* 1. Definice animace: Z "neviditelného" (1000) do "viditelného" (0) */
+
+/* 1. Definice animace: Z "neviditelného" (3000) do "viditelného" (0) */
 @keyframes drawLines {
     from {
-        stroke-dashoffset: 1000; /* Čára je "odsunutá", takže není vidět */
+        stroke-dashoffset: 3000; /* Čára je "odsunutá", takže není vidět */
     }
     to {
         stroke-dashoffset: 0;    /* Čára je na svém místě = vykreslená */
@@ -50,10 +50,10 @@ html {
 /* 2. Třída, která se přidá k SVG */
 .animate-logo path {
     /* Nastavíme přerušovanou čáru delší než je samotné logo */
-    stroke-dasharray: 1000;
+    stroke-dasharray: 3000;
     
     /* Na začátku ji posuneme pryč, aby nebylo nic vidět */
-    stroke-dashoffset: 1000;
+    stroke-dashoffset: 3000;
     
     /* Spustíme animaci: trvá 2 sekundy, plynulý dojezd */
     animation: drawLines 2s ease-out forwards;
