@@ -230,7 +230,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const distance = targetPosition - startPosition;
             
             // 1. ZMĚNA: Zkrácení času z 1500 na 1000ms (nebo 800ms pro svižnější web)
-            const duration = 1000; 
+            const duration = 700; 
             let start = null;
 
             function step(timestamp) {
