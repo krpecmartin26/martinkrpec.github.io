@@ -1,43 +1,65 @@
-/* Globální styl webu */
+/* =========================================
+   1. GLOBÁLNÍ STYLY
+   ========================================= */
 body {
     background-color: #1a1a1a; /* Antracitové pozadí */
     color: #e0e0e0;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 
-/* Celá lišta */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   2. SCROLLBAR (Posuvník)
+   ========================================= */
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 10px;
 }
 
-/* Pozadí lišty */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #1a1a1a;
 }
 
-/* Ten posuvník (jezdec) */
 ::-webkit-scrollbar-thumb {
-    background: #005f87;
+    background: #005f87; /* Siemens tmavší modrá */
     border-radius: 5px;
 }
 
-/* Jezdec při najetí myší */
 ::-webkit-scrollbar-thumb:hover {
-    background: #005f97;
+    background: #3498db; /* Siemens světlejší modrá */
 }
-/* Centrování a vzhled sekcí */
+
+/* =========================================
+   3. ANIMACE (Pouze pro odkrývání sekcí)
+   ========================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   4. SEKCIE A NADPISY
+   ========================================= */
 section {
     max-width: 900px;
     margin: 2rem auto;
     padding: 2.5rem;
-    background: #222222; /* Decentní kontrast karet */
+    background: #222222;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     text-align: center;
 }
 
-/* Nadpisy v Siemens modré */
 h2 {
     color: #005f87; 
     border-bottom: 2px solid #005f87;
@@ -53,214 +75,32 @@ h3 {
     margin-top: 0;
 }
 
-/* Úprava seznamů a textu */
 ul {
     list-style: none;
     padding: 0;
 }
 
-li {
-    margin-bottom: 15px;
-}
-
-/* Skill tagy - moderní modrý vzhled */
-.skill-tag {
-    background: rgba(0, 95, 135, 0.1);
-    border: 1px solid #005f87;
-    color: #005f87;
-    padding: 6px 14px;
-    border-radius: 4px;
-    display: inline-block;
-    margin: 5px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.skill-tag:hover {
-    background: #005f87;
-    color: #ffffff;
-}
-
-/* Animace Reveal */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease-out;
-}
-
-.reveal.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* Základní styl odkazu (ikony) */
-.tooltip-link {
-    position: relative;
-    color: #005f87; /* Siemens modrá */
-    font-size: 35px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-/* Skrytá bublina s textem */
-.tooltip-box {
-    visibility: hidden; /* Tohle zajistí, že text není vidět */
-    opacity: 0;
-    width: 90px;
-    background-color: #333; /* Tmavé pozadí bubliny */
-    color: #fff;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 10;
-    bottom: 150%; /* Pozice nad ikonou */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    font-family: sans-serif;
-    transition: opacity 0.3s, bottom 0.3s;
-}
-
-/* Šipka pod bublinou */
-.tooltip-box::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-}
-
-/* Zobrazení při najetí myší na ikonu */
-.tooltip-link:hover .tooltip-box {
-    visibility: visible;
-    opacity: 1;
-    bottom: 130%; /* Bublina jemně popojede nahoru */
-}
-
-/* Zvětšení ikony při najetí */
-.tooltip-link:hover {
-    color: #0077b5; /* Mírná změna barvy při najetí */
-    transform: scale(1.2);
-}
-/* Karty projektů se jemně nadzvednou a zvýrazní */
-#projects div[style*="border: 1px solid"] {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#projects div[style*="border: 1px solid"]:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    border-color: #994099 !important;
-}
-
-.skill-tag {
-    background: #eee;
-    color: #333;
-    padding: 8px 15px;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 5px;
-    font-weight: bold;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Pružný efekt */
-    border: 1px solid transparent;
-}
-
-.skill-tag:hover {
-    background: #0077b5 !important; 
-    color: white !important;
-    transform: scale(1.1) translateY(-2px); /* Zvětší se a poskočí nahoru */
-    box-shadow: 0 5px 15px rgba(153, 64, 153, 0.4);
-    border-color: #ffffff;
-}
-.cert-card {
-    background: #ffffff10;
-    border: 1px solid #333;
-    border-radius: 8px;
-    width: 350px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    
-    /* KLÍČOVÉ ZMĚNY PRO ZAROVNÁNÍ */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Roztáhne obsah mezi horní část a patičku */
-}
-
-.cert-card:hover {
-    border-color: #3498db;
-    background: #ffffff15;
-    transform: translateY(-5px);
-}
-
-.cert-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column; /* Ikona bude nad textem */
-    align-items: center;    /* Vše na střed horizontálně */
-    text-align: center;     /* Text na střed */
-    gap: 10px;
-    flex-grow: 1;
-}
-
-.cert-content i {
-    font-size: 24px;
-    color: #3498db;
-}
-
-.cert-info h3 {
-    margin: 0 0 5px 0;
-    font-size: 16px;
-    color: #fff;
-}
-
-.cert-info h3 {
-    margin: 10px 0 5px 0;
-    font-size: 16px;
-    color: #fff;
-}
-
-.cert-footer {
-    background: #111;
-    padding: 12px;           /* Trochu jsem přidal na výšce pro lepší klikatelnost */
-    text-align: center;
-    font-size: 11px;
-    font-weight: bold;
-    color: #3498db;
-    text-transform: uppercase;
-    border-top: 1px solid #333;
-    margin-top: auto;        /* Pojistka, aby patička byla vždy dole */
-}
+/* =========================================
+   5. BOČNÍ NAVIGACE (Side Nav)
+   ========================================= */
 .side-nav {
     position: fixed;
-    right: 40px; /* Menu bude vpravo */
+    right: 30px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     z-index: 1000;
-}
-
-/* Na mobilu menu schováme nebo ho vrátíme nahoru */
-@media (max-width: 768px) {
-    .side-nav {
-        display: none; 
-    }
 }
 
 .nav-item {
     text-decoration: none;
-    color: #888;
-    font-size: 12px;
+    color: #666;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    writing-mode: vertical-rl; /* Text bude svisle */
+    letter-spacing: 3px;
+    writing-mode: vertical-rl; /* Text svisle */
     transition: all 0.3s ease;
     padding: 10px 0;
     border-right: 2px solid transparent;
@@ -269,4 +109,131 @@ li {
 .nav-item:hover, .nav-item.active {
     color: #3498db;
     border-right: 2px solid #3498db;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
 }
+
+@media (max-width: 1100px) {
+    .side-nav {
+        display: none; 
+    }
+}
+
+/* =========================================
+   6. SKILL TAGS
+   ========================================= */
+.skill-tag {
+    background: rgba(0, 95, 135, 0.1);
+    border: 1px solid #005f87;
+    color: #005f87;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+}
+
+.skill-tag:hover {
+    background: #005f87;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 95, 135, 0.3);
+}
+
+/* =========================================
+   7. PROJEKTY
+   ========================================= */
+#projects div[style*="border: 1px solid"] {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projects div[style*="border: 1px solid"]:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-color: #3498db !important;
+}
+
+/* =========================================
+   8. CERTIFIKÁTY
+   ========================================= */
+.cert-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 320px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cert-card:hover {
+    border-color: #3498db;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.cert-content {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.cert-content i {
+    font-size: 28px;
+    color: #3498db;
+    margin-bottom: 5px;
+}
+
+.cert-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.cert-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+.cert-footer {
+    background: #111;
+    padding: 12px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #3498db;
+    text-transform: uppercase;
+    border-top: 1px solid #333;
+    margin-top: auto;
+}
+
+/* =========================================
+   9. KONTAKT (Footer linky)
+   ========================================= */
+.tooltip-link {
+    position: relative;
+    color: #005f87;
+    font-size: 35px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.tooltip-link:hover {
+    color: #3498db;
+    transform: scale(1.1);
+}
+
