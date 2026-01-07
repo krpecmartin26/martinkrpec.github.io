@@ -216,25 +216,7 @@ if (zoomContainer) {
 /* =========================================
    4. SCROLL SPY & PLYNULÝ SCROLL
    ========================================= */
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    const navItems = document.querySelectorAll('.nav-item');
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= (sectionTop - 150)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').includes(current)) {
-            item.classList.add('active');
-        }
-    });
-});
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -246,29 +228,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const targetPosition = targetElement.offsetTop;
             const startPosition = window.pageYOffset;
             const distance = targetPosition - startPosition;
-            const duration = 1500;
+            
+            // 1. ZMĚNA: Zkrácení času z 1500 na 1000ms (nebo 800ms pro svižnější web)
+            const duration = 1000; 
             let start = null;
 
             function step(timestamp) {
                 if (!start) start = timestamp;
                 const progress = timestamp - start;
-                const run = ease(progress, startPosition, distance, duration);
+                
+                // Ošetření, aby animace nepřejela čas (občas to dělalo skoky na konci)
+                const timePassed = Math.min(progress, duration);
+
+                const run = ease(timePassed, startPosition, distance, duration);
                 window.scrollTo(0, run);
+                
                 if (progress < duration) window.requestAnimationFrame(step);
             }
 
+            // 2. ZMĚNA: Funkce easeOutCubic
+            // Rychlý start, plynulé zpomalování ke konci.
+            // Žádné zrychlování uprostřed.
             function ease(t, b, c, d) {
-                t /= d / 2;
-                if (t < 1) return c / 2 * t * t + b;
+                t /= d;
                 t--;
-                return -c / 2 * (t * (t - 2) - 1) + b;
+                return c * (t * t * t + 1) + b;
             }
 
             window.requestAnimationFrame(step);
         }
     });
 });
-
 /* =========================================
    5. SCROLL REVEAL
    ========================================= */
