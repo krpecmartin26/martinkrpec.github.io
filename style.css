@@ -34,37 +34,29 @@ html {
 }
 
 /* =========================================
-   3. ANIMACE LOGA (Kreslení)
+   3. ANIMACE LOGA - OPRAVENO
    ========================================= */
 
-/* Definice klíčových snímků zůstává stejná */
 @keyframes drawLines {
-    from {
-        stroke-dashoffset: 3000;
-    }
-    to {
-        stroke-dashoffset: 0;
-    }
+    from { stroke-dashoffset: 3000; }
+    to { stroke-dashoffset: 0; }
 }
 
-/* Základní nastavení pro obě části loga */
+/* Základní nastavení - skryje čáry před startem */
 .animate-logo path {
-    stroke-dasharray: 3000;
+    stroke-dasharray: 3000; 
     stroke-dashoffset: 3000;
-    /* Zde již nespouštíme animaci hromadně, 
-       ale nastavíme ji níže pro každé zvlášť */
 }
 
-/* 1. Písmeno "M" (první cesta) - Startuje HNED */
+/* 1. Část (M) - Startuje HNED */
 .animate-logo path:nth-child(1) {
     animation: drawLines 2s ease-out forwards;
-    animation-delay: 0s;
 }
 
-/* 2. Písmeno "K" (druhá cesta) - Startuje o 0.2s POZDĚJI */
+/* 2. Část (K) - Startuje o 0.2s POZDĚJI */
 .animate-logo path:nth-child(2) {
     animation: drawLines 2s ease-out forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.2s; /* Zde je to zpoždění */
 }
 /* =========================================
    4. SEKCIE
