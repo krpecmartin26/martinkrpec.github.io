@@ -1,280 +1,218 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EX8CBW5Y41"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EX8CBW5Y41');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX8CBW5Y41"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EX8CBW5Y41');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Martin Krpec | PLC Programmer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
 </head>
-<div id="imageModal" onclick="closeModal()" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column;">
-    
-    <div id="modalLoader" style="text-align: center;">
-        <div style="color: #3498db; width: 80px; height: 80px; margin: 0 auto;">
-            <svg style="width: 100%; height: 100%; animation: pulseLogo 1.5s infinite;">
-                <use xlink:href="#logo-mk"></use>
-            </svg>
-        </div>
-        <div id="modal-binary" style="margin-top: 15px; font-family: monospace; color: #3498db; font-size: 14px; letter-spacing: 2px;"></div>
-        <p style="font-family: Arial; font-size: 10px; color: #555; letter-spacing: 3px; margin-top: 5px;">LOADING DATA...</p>
-    </div>
 
-    <img id="modalImg" style="max-width: 90%; max-height: 90%; border: 2px solid #333; border-radius: 5px; display: none;">
-</div>
 <body>
+
 <svg style="display: none;">
   <symbol id="logo-mk" viewBox="0 0 100 100">
-    <path d="M20 80 V20 L50 50 L80 20 V80 M50 50 L80 80" 
-          fill="none" 
-          stroke="currentColor" 
-          stroke-width="5" 
-          stroke-linecap="round" 
-          stroke-linejoin="round" />
+    <path d="M20 80 V20 L50 50 L80 20" fill="none" stroke="#3498db" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M80 20 V80 M50 50 L80 80" fill="none" stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
   </symbol>
 </svg>
-<div class="logo-wrapper" style="color: #005f87;">
-    <svg width="120" height="120">
-        <use xlink:href="#logo-mk" class="logo-path"></use>
-    </svg>
+
+<div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 20000; transition: opacity 0.5s;">
+    <div style="text-align: center;">
+        <svg width="120" height="120">
+            <use xlink:href="#logo-mk"></use>
+        </svg>
+        <div id="preloader-binary" style="margin-top: 20px; font-family: monospace; color: #3498db; letter-spacing: 2px; font-weight: bold;"></div>
+    </div>
 </div>
 
-<header>
-    <header style="padding: 5rem 2rem; text-align: center; background: #1a1a1a; border-bottom: 1px solid #333;">
-    <h1 style="font-size: 3.5rem; color: #ffffff; margin: 0; letter-spacing: -1px;">Martin Krpec</h1>
-    <div style="width: 50px; height: 4px; background: #005f87; margin: 20px auto;"></div>
-    <p style="font-size: 1.1rem; color: #005f87; font-weight: bold; letter-spacing: 3px; text-transform: uppercase;">PLC Programmer | HMI Developer</p>
-    <nav class="side-nav">
+<nav class="side-nav">
     <a href="#about" class="nav-item"><span>About</span></a>
     <a href="#experience" class="nav-item"><span>Journey</span></a>
     <a href="#projects" class="nav-item"><span>Projects</span></a>
     <a href="#certifications" class="nav-item"><span>Certificates</span></a>
     <a href="#contact" class="nav-item"><span>Contact</span></a>
 </nav>
+
+<header style="padding: 5rem 2rem; text-align: center; background: #1a1a1a; border-bottom: 1px solid #333;">
+    <h1 style="font-size: 3.5rem; color: #ffffff; margin: 0; letter-spacing: -1px;">Martin Krpec</h1>
+    <div style="width: 50px; height: 4px; background: #005f87; margin: 20px auto;"></div>
+    <p style="font-size: 1.1rem; color: #005f87; font-weight: bold; letter-spacing: 3px; text-transform: uppercase;">PLC Programmer | HMI Developer</p>
 </header>
 
+<main>
+    <section id="about" class="reveal">
+        <h2>About me</h2>
+        <p>I am working on the development and commissioning of automation systems using Siemens PLC and HMI platforms, including system visualization, PLC programming, testing, and on-site startup.</p>
+    </section>
 
-<section id="about" class="reveal">
-    <h2>About me</h2>
-    <p>I am working on the development and commissioning of automation systems using Siemens PLC and HMI platforms, including system visualization, PLC programming, testing, and on-site startup.</p>
-</section>
-
-<section id="experience" class="reveal">
-    <h2>My Professional Journey</h2>
-    <div class="timeline" style="max-width: 800px; margin: 0 auto; text-align: left;">
-        
-        <div style="border-left: 3px solid #994099; padding-left: 25px; margin-bottom: 40px; position: relative;">
-            <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #994099; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-code" style="color: white; font-size: 10px;"></i>
+    <section id="experience" class="reveal">
+        <h2>My Professional Journey</h2>
+        <div class="timeline" style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <div style="border-left: 3px solid #994099; padding-left: 25px; margin-bottom: 40px; position: relative;">
+                <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #994099; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                    <i class="fas fa-code" style="color: white; font-size: 10px;"></i>
+                </div>
+                <p style="margin: 0; font-weight: bold; color: #994099;">05/2025 – Present</p>
+                <h3 style="margin: 5px 0;">SW Developer</h3>
+                <p style="margin: 0; font-weight: bold;">ICE Industrial Services</p>
+                <p style="font-size: 0.9em; color: #555;">Focusing on advanced PLC programming and high-end HMI solutions using WinCC Unified and JavaScript.</p>
             </div>
-            <p style="margin: 0; font-weight: bold; color: #994099;">05/2025 – Present</p>
-            <h3 style="margin: 5px 0;">SW Developer</h3>
-            <p style="margin: 0; font-weight: bold;">ICE Industrial Services</p>
-            <p style="font-size: 0.9em; color: #555;">Focusing on advanced PLC programming and high-end HMI solutions using WinCC Unified and JavaScript. Turning complex industrial requirements into functional reality.</p>
-        </div>
 
-        <div style="border-left: 3px solid #004a99; padding-left: 25px; margin-bottom: 40px; position: relative;">
-            <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #004a99; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-microchip" style="color: white; font-size: 10px;"></i>
+            <div style="border-left: 3px solid #004a99; padding-left: 25px; margin-bottom: 40px; position: relative;">
+                <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #004a99; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                    <i class="fas fa-microchip" style="color: white; font-size: 10px;"></i>
+                </div>
+                <p style="margin: 0; font-weight: bold; color: #004a99;">05/2021 – 04/2025</p>
+                <h3 style="margin: 5px 0;">Technician Electronic</h3>
+                <p style="margin: 0; font-weight: bold;">Bonatrans Group a.s.</p>
+                <p style="font-size: 0.9em; color: #555;">Deep dive into industrial electronics and system optimization.</p>
             </div>
-            <p style="margin: 0; font-weight: bold; color: #004a99;">05/2021 – 04/2025</p>
-            <h3 style="margin: 5px 0;">Technician Electronic</h3>
-            <p style="margin: 0; font-weight: bold;">Bonatrans Group a.s.</p>
-            <p style="font-size: 0.9em; color: #555;">Deep dive into industrial electronics and system optimization. Responsible for maintaining, troubleshooting, and improving sophisticated production lines.</p>
-        </div>
 
-        <div style="border-left: 3px solid #888; padding-left: 25px; position: relative;">
-            <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #888; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                <i class="fas fa-bolt" style="color: white; font-size: 10px;"></i>
+            <div style="border-left: 3px solid #888; padding-left: 25px; position: relative;">
+                <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #888; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                    <i class="fas fa-bolt" style="color: white; font-size: 10px;"></i>
+                </div>
+                <p style="margin: 0; font-weight: bold; color: #666;">01/2018 – 04/2021</p>
+                <h3 style="margin: 5px 0;">Electrician</h3>
+                <p style="margin: 0; font-weight: bold;">Mayr-Melnhof Holz Paskov</p>
+                <p style="font-size: 0.9em; color: #555;">Essential hands-on experience in industrial electrical maintenance.</p>
             </div>
-            <p style="margin: 0; font-weight: bold; color: #666;">01/2018 – 04/2021</p>
-            <h3 style="margin: 5px 0;">Electrician</h3>
-            <p style="margin: 0; font-weight: bold;">Mayr-Melnhof Holz Paskov</p>
-            <p style="font-size: 0.9em; color: #555;">The beginning of my technical career. Gained essential hands-on experience in industrial electrical maintenance and machine safety on shifts.</p>
         </div>
+    </section>
 
+    <section id="focus" class="reveal">
+        <h2>Future Focus</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #333; border-radius: 8px; background: #000;">
+                <i class="fas fa-industry" style="font-size: 24px; color: #005f87; margin-bottom: 20px;"></i>
+                <h3 style="margin: 0 0 10px 0; color: #3498db;">On-site & Offline</h3>
+                <p style="font-size: 0.9em; margin: 0; color: #ffffff">Complex commissioning on-site and efficient offline software preparation.</p>
+            </div>
+            <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #333; border-radius: 8px; background: #000;">
+                <i class="fas fa-desktop" style="font-size: 24px; color: #004a99; margin-bottom: 20px;"></i>
+                <h3 style="margin: 0 0 10px 0; color: #3498db;">Front-end Dev</h3>
+                <p style="font-size: 0.9em; margin: 0; color: #ffffff">Merging industrial UI with modern web standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2>My Projects</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <div style="max-width: 350px; border: 1px solid #005f87; padding: 10px; border-radius: 8px; background: #333;">
+                <h3>LEAR</h3> 
+                <img src="Lear_01.png" onclick="openModal(this.src)" style="width: 100%; border-radius: 5px; cursor: pointer;" alt="HMI Design">
+                <p>seat assembly line</p>
+            </div>
+            <div style="max-width: 350px; border: 1px solid #005f87; padding: 10px; border-radius: 8px; background: #333;">
+                <h3>Valeo</h3>
+                <img src="Lear_02.png" onclick="openModal(this.src)" style="width: 100%; border-radius: 5px; cursor: pointer;" alt="PLC Cabinet">
+                <p>Conveyor system for molding</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="reveal">
+        <h2>Skills and Experience</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+            <div class="skill-tag">TIA Portal</div>
+            <div class="skill-tag">Siemens STEP7</div>
+            <div class="skill-tag">WinCC Unified</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">S7-1500 / S7-1200</div>
+            <div class="skill-tag">PROFINET</div>
+        </div>
+    </section>
+
+    <section id="certifications" class="reveal" style="padding: 60px 20px;">
+        <h2 style="text-align: center; color: #3498db; text-transform: uppercase; letter-spacing: 2px;">Certifications</h2>
+        <div style="width: 100px; height: 2px; background: #3498db; margin: 10px auto 40px auto;"></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto;">
+            <div class="cert-card" onclick="openModal('TIA SERV 1,2.png')">
+                <div class="cert-content">
+                    <i class="fas fa-file-contract"></i>
+                    <div class="cert-info"><h3>Siemens STEP7</h3><p>Basic programming of STEP7</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+            <div class="cert-card" onclick="openModal('TIA SERV 3.png')">
+                <div class="cert-content">
+                    <i class="fas fa-certificate"></i>
+                    <div class="cert-info"><h3>Siemens TIA Portal</h3><p>Advanced programming and maintenance</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+            <div class="cert-card" onclick="openModal('TIA Safety.png')">
+                <div class="cert-content">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="cert-info"><h3>TIA Safety</h3><p>Advanced TIA Safety programming</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+            <div class="cert-card" onclick="openModal('Tia_SCL.png')">
+                <div class="cert-content">
+                    <i class="fas fa-code"></i>
+                    <div class="cert-info"><h3>TIA SCL</h3><p>Advanced programming TIA SCL</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+            <div class="cert-card" onclick="openModal('Foxon profinet.png')">
+                <div class="cert-content">
+                    <i class="fas fa-network-wired"></i>
+                    <div class="cert-info"><h3>Profinet</h3><p>Diagnostic and troubleshooting</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+            <div class="cert-card" onclick="openModal('ABB_IRC5 Diagnostic and troubleshooting.png')">
+                <div class="cert-content">
+                    <i class="fas fa-robot"></i>
+                    <div class="cert-info"><h3>ABB IRC5</h3><p>Diagnostic and troubleshooting</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+            <div class="cert-card" onclick="openModal('ABB_IRC5 operation and basic programming.png')">
+                <div class="cert-content">
+                    <i class="fas fa-terminal"></i>
+                    <div class="cert-info"><h3>ABB IRC5</h3><p>Basic programming</p></div>
+                </div>
+                <div class="cert-footer">View Document</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="imageModal" onclick="closeModal()" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column;">
+    <div id="modalLoader" style="text-align: center;">
+        <svg width="80" height="80">
+            <use xlink:href="#logo-mk"></use>
+        </svg>
+        <div id="modal-binary" style="margin-top: 15px; font-family: monospace; color: #3498db; font-size: 14px; letter-spacing: 2px;"></div>
+        <p style="font-family: Arial; font-size: 10px; color: #555; letter-spacing: 3px; margin-top: 5px;">LOADING DATA...</p>
     </div>
-</section>
-
-<section id="focus" class="reveal">
-    <h2>Future Focus</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        
-        <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #000000; border-radius: 8px; background: #000000;">
-            <i class="fas fa-industry" style="font-size: 24px; color: #005f87; margin-bottom: 20px;"></i>
-            <h3 style="margin: 0 0 10px 0;color: #333">On-site & Offline</h3>
-            <p style="font-size: 0.9em; margin: 0;color: #ffffff">Complex commissioning on-site and efficient offline software preparation to ensure seamless project delivery.</p>
-        </div>
-
-        <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #000000; border-radius: 8px; background: #000000;">
-            <i class="fas fa-desktop" style="font-size: 24px; color: #004a99; margin-bottom: 20px;"></i>
-            <h3 style="margin: 0 0 10px 0;color: #333">Front-end Dev</h3>
-            <p style="font-size: 0.9em; margin: 0;color: #ffffff">Merging industrial UI with modern web standards to create next-generation visualization systems.</p>
-        </div>
-
-    </div>
-</section>
-
-
-<section id="projects" class="reveal">
-    <h2>My Projects</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <div style="max-width: 350px; border: 1px solid #005f87; padding: 10px; border-radius: 8px; background: #333;">
-            <h3>LEAR</h3> 
-            <img src="Lear_01.png" onclick="openModal(this.src)" style="width: 100%; border-radius: 5px; cursor: pointer;" alt="HMI Design">
-            <p>seat assembly line</p>
-        </div>
-        <div style="max-width: 350px; border: 1px solid #005f87; padding: 10px; border-radius: 8px; background: #333;">
-            <h3>Valeo</h3>
-            <img src="Lear_02.png" onclick="openModal(this.src)" style="width: 100%; border-radius: 5px; cursor: pointer;" alt="PLC Cabinet">
-            <p>Conveyor system for molding and manual workplace</p>
-        </div>
-    </div>
-</section>
-
-<section id="skills" class="reveal">
-    <h2>Skills and experiance</h2>
-    <ul style="list-style-position: inside; padding-left: 0;"></ul>
-         <div class="skill-tag">TIA Portal</div>
-         <div class="skill-tag">Siemens STEP7</div>
-         <div class="skill-tag">WinCC Unified</div>
-         <div class="skill-tag">JavaScript</div>
-         <div class="skill-tag">S7-1500 / S7-1200 / S7-300</div>
-         <div class="skill-tag">PROFINET</div>
-         <div class="skill-tag">Web building</div>
-</section>
-
-<section id="certifications" class="reveal" style="padding: 60px 20px;">
-    <h2 style="text-align: center; color: #3498db; text-transform: uppercase; letter-spacing: 2px;">Certifications</h2>
-    <div style="width: 100px; height: 2px; background: #3498db; margin: 10px auto 40px auto;"></div>
-    
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto;">
-        
-        <div class="cert-card" onclick="openModal('TIA SERV 1,2.png')">
-            <div class="cert-content">
-                <i class="fas fa-file-contract"></i>
-                <div class="cert-info">
-                    <h3>Siemens STEP7</h3>
-                    <p>Basic programming of STEP7</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-
-        <div class="cert-card" onclick="openModal('TIA SERV 3.png')">
-            <div class="cert-content">
-                <i class="fas fa-certificate"></i>
-                <div class="cert-info">
-                    <h3>Siemens TIA Portal</h3>
-                    <p>Advanced programming and maintenance of S7-1200/1500 systems and WinCC visualizations.</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-        <div class="cert-card" onclick="openModal('TIA Safety.png')">
-            <div class="cert-content">
-                <i class="fas fa-certificate"></i>
-                <div class="cert-info">
-                    <h3>Siemens TIA Portal Safety</h3>
-                    <p> Advenced TIA Safety programming</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-        <div class="cert-card" onclick="openModal('Tia_SCL.png')">
-            <div class="cert-content">
-                <i class="fas fa-certificate"></i>
-                <div class="cert-info">
-                    <h3>Siemens TIA Portal SCL</h3>
-                    <p>Advanced programming TIA SCL</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-        <div class="cert-card" onclick="openModal('Foxon profinet.png')">
-            <div class="cert-content">
-                <i class="fas fa-certificate"></i>
-                <div class="cert-info">
-                    <h3>Profinet</h3>
-                    <p>Advanced profinet diagnostic and troubleshooting</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-        <div class="cert-card" onclick="openModal('ABB_IRC5 Diagnostic and troubleshooting.png')">
-            <div class="cert-content">
-                <i class="fas fa-certificate"></i>
-                <div class="cert-info">
-                    <h3>ABB IRC5</h3>
-                    <p>Advenced diagnostic and troubleshooting ABB IRC5</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-        <div class="cert-card" onclick="openModal('ABB_IRC5 operation and basic programming.png')">
-            <div class="cert-content">
-                <i class="fas fa-certificate"></i>
-                <div class="cert-info">
-                    <h3>ABB IRC5</h3>
-                    <p>Basic programming and maintenance ABB IRC5</p>
-                </div>
-            </div>
-            <div class="cert-footer">View Document</div>
-        </div>
-        </div>
-</section>
-
-<div id="imageModal" onclick="closeModal()" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; flex-direction: column;">
-        
-        <div id="modalLoader" style="color: #3498db; width: 80px; height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <svg style="width: 60px; height: 60px; animation: pulseLogo 1.5s infinite;">
-                <use xlink:href="#logo-mk"></use>
-            </svg>
-            <p style="font-family: monospace; font-size: 10px; color: #3498db; margin-top: 15px; letter-spacing: 3px;">LOADING</p>
-        </div>
-
-        <img id="modalImg" style="max-width: 90%; max-height: 90%; border: 3px solid white; border-radius: 5px; display: none; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
-    </div>
-
-    <script src="script.js"></script>
-
-    <footer id="contact" style="background-color: #111; padding: 60px 20px; text-align: center;">
-    <h2 style="color: #005f87; border-color: #005f87;">Contact Me</h2>
-    <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
-    
-    <a href="https://www.linkedin.com/in/martin-krpec/" target="_blank" class="tooltip-link">
-        <span class="tooltip-box">LinkedIn</span>
-        <i class="fab fa-linkedin"></i>
-    </a>
-
-    <a href="mailto:krpecmartin26@gmail.com" class="tooltip-link">
-        <span class="tooltip-box">Email</span>
-        <i class="fas fa-envelope"></i>
-    </a>
-
-    <a href="https://wa.me/420737933650" target="_blank" class="tooltip-link">
-        <span class="tooltip-box">WhatsApp</span>
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <a href="https://www.facebook.com/profile.php?id=61555037739893" target="_blank" class="tooltip-link">
-        <span class="tooltip-box">Facebook</span>
-        <i class="fab fa-facebook"></i>
-    </a>
-
+    <img id="modalImg" style="max-width: 90%; max-height: 90%; border: 2px solid #333; border-radius: 5px; display: none; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
 </div>
 
+<footer id="contact" style="background-color: #111; padding: 60px 20px; text-align: center;">
+    <h2 style="color: #005f87; margin-bottom: 30px;">Contact Me</h2>
+    <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
+        <a href="https://www.linkedin.com/in/martin-krpec/" target="_blank" class="tooltip-link"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:krpecmartin26@gmail.com" class="tooltip-link"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/420737933650" target="_blank" class="tooltip-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61555037739893" target="_blank" class="tooltip-link"><i class="fab fa-facebook"></i></a>
     </div>
     <p style="margin-top: 40px; font-size: 13px; color: #555;">&copy; 2026 Martin Krpec | Built with Github</p>
 </footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
