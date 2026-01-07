@@ -176,3 +176,56 @@ li {
     box-shadow: 0 5px 15px rgba(153, 64, 153, 0.4);
     border-color: #ffffff;
 }
+.cert-card {
+    background: #ffffff10; /* Velmi jemné prosvětlení pozadí */
+    border: 1px solid #333;
+    border-radius: 8px;
+    width: 350px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-card:hover {
+    border-color: #3498db;
+    background: #ffffff15;
+    transform: translateY(-5px);
+}
+
+.cert-content {
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.cert-content i {
+    font-size: 24px;
+    color: #3498db;
+}
+
+.cert-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.cert-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #888;
+    line-height: 1.4;
+}
+
+.cert-footer {
+    background: #111;
+    padding: 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: #3498db;
+    text-transform: uppercase;
+    border-top: 1px solid #333;
+}
