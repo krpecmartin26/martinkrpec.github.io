@@ -118,16 +118,28 @@ function updateTransform() {
 
 function checkBoundaries() {
     const rect = zoomContainer.getBoundingClientRect();
-    // Jak velký je obrázek po zvětšení
     const contentWidth = rect.width * scale;
     const contentHeight = rect.height * scale;
 
-    // Logika: nenechat uživatele odtáhnout obrázek tak, aby bylo vidět černé pozadí
-    if (pannedX > 0) pannedX = 0;
-    if (pannedX < rect.width - contentWidth) pannedX = rect.width - contentWidth;
+    // 1. Osa X (Vodorovně)
+    if (contentWidth > rect.width) {
+        // Pokud je obrázek širší než okno -> Povolit posun, ale jen k okrajům
+        if (pannedX > 0) pannedX = 0; // Levý okraj
+        if (pannedX < rect.width - contentWidth) pannedX = rect.width - contentWidth; // Pravý okraj
+    } else {
+        // Pokud je obrázek užší než okno -> Vycentrovat ho
+        pannedX = (rect.width - contentWidth) / 2;
+    }
     
-    if (pannedY > 0) pannedY = 0;
-    if (pannedY < rect.height - contentHeight) pannedY = rect.height - contentHeight;
+    // 2. Osa Y (Svisle)
+    if (contentHeight > rect.height) {
+        // Pokud je obrázek vyšší než okno -> Povolit posun, ale jen k okrajům
+        if (pannedY > 0) pannedY = 0; // Horní okraj
+        if (pannedY < rect.height - contentHeight) pannedY = rect.height - contentHeight; // Spodní okraj
+    } else {
+        // Pokud je obrázek nižší než okno -> Vycentrovat ho
+        pannedY = (rect.height - contentHeight) / 2;
+    }
 }
 
 // --- EVENT LISTENERS (Ovládání myší) ---

@@ -266,14 +266,21 @@ ul {
 #modal-image-container {
     width: 90%;
     height: 80%;
-    max-width: 1400px; /* Maximální šířka okna */
+    max-width: 1400px;
     max-height: 900px;
     position: relative;
-    overflow: hidden; /* To, co je "mimo" rámeček, se schová */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: zoom-in; /* Kurzor lupy */
+    overflow: hidden;
+    
+    /* TOTO JSME ZMĚNILI: */
+    margin: auto;     /* Vycentruje kontejner na stránce */
+    background: #000; /* Černé pozadí */
+    
+    /* TOTO MUSÍ PRYČ (Flexbox rozbíjí souřadnice zoomu): */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    
+    cursor: zoom-in;
 }
 
 /* Samotný obrázek */
