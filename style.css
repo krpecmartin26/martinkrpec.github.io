@@ -37,26 +37,34 @@ html {
    3. ANIMACE LOGA (Kreslení)
    ========================================= */
 
-/* 1. Definice animace: Z "neviditelného" (3000) do "viditelného" (0) */
+/* Definice klíčových snímků zůstává stejná */
 @keyframes drawLines {
     from {
-        stroke-dashoffset: 3000; /* Čára je "odsunutá", takže není vidět */
+        stroke-dashoffset: 3000;
     }
     to {
-        stroke-dashoffset: 0;    /* Čára je na svém místě = vykreslená */
+        stroke-dashoffset: 0;
     }
 }
 
-/* 2. Třída, která se přidá k SVG */
+/* Základní nastavení pro obě části loga */
 .animate-logo path {
-    /* Nastavíme přerušovanou čáru delší než je samotné logo */
     stroke-dasharray: 3000;
-    
-    /* Na začátku ji posuneme pryč, aby nebylo nic vidět */
     stroke-dashoffset: 3000;
-    
-    /* Spustíme animaci: trvá 2 sekundy, plynulý dojezd */
+    /* Zde již nespouštíme animaci hromadně, 
+       ale nastavíme ji níže pro každé zvlášť */
+}
+
+/* 1. Písmeno "M" (první cesta) - Startuje HNED */
+.animate-logo path:nth-child(1) {
     animation: drawLines 2s ease-out forwards;
+    animation-delay: 0s;
+}
+
+/* 2. Písmeno "K" (druhá cesta) - Startuje o 0.2s POZDĚJI */
+.animate-logo path:nth-child(2) {
+    animation: drawLines 2s ease-out forwards;
+    animation-delay: 0.2s;
 }
 /* =========================================
    4. SEKCIE
