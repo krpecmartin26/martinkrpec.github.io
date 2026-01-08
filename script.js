@@ -262,13 +262,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* =========================================
    5. SCROLL REVEAL
    ========================================= */
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
+            // Prvek je na obrazovce -> UKÁZAT
             entry.target.classList.add('show');
+        } else {
+            // Prvek odjel z obrazovky -> SKRÝT (reset animace)
+            entry.target.classList.remove('show');
         }
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.1 }); // 10% prvku musí být vidět, aby se spustila
 
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 

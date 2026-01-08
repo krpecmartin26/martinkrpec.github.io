@@ -512,8 +512,8 @@ strong {
     /* Používáme proměnné --x a --y, které nám pošle Javascript */
     background: radial-gradient(
         600px circle at var(--x, 50%) var(--y, 50%), 
-        rgba(0, 95, 135, 0.15),  /* Střed: Jemná modrá (tvůj accent) */
-        transparent 40%          /* Okraj: Průhledná */
+        rgba(0, 95, 135, 0.25),  /* ZPÁTKY NA MODROU (0.25 je intenzita) */
+        transparent 40%
     );
     
     opacity: 1;
