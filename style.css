@@ -535,3 +535,24 @@ body.light-mode #flashlight {
         transparent 40%
     );
 }
+/* =========================================
+   12. VYPNOUT SVÍTILNU NA MOBILECH
+   ========================================= */
+@media (max-width: 1024px), (hover: none) {
+    #flashlight {
+        display: none; /* Schová element z DOMu */
+    }
+}
+/* =========================================
+   13. SCROLL REVEAL ANIMACE (To, co chybělo)
+   ========================================= */
+.reveal {
+    opacity: 0;               /* Na začátku neviditelné */
+    transform: translateY(50px); /* Posunuté o 50px dolů */
+    transition: all 0.8s ease-out; /* Plynulý přechod trvající 0.8s */
+}
+
+.reveal.show {
+    opacity: 1;               /* Plně viditelné */
+    transform: translateY(0); /* Vrátí se na původní místo */
+}
