@@ -3,47 +3,58 @@
    ========================================= */
 :root {
     /* --- VÝCHOZÍ (TMAVÝ) REŽIM --- */
-    --bg-main: #1a1a1a;           /* Hlavní pozadí stránky */
-    --bg-card: #222222;           /* Pozadí karet a sekcí */
-    --bg-nav: #111111;            /* Pozadí patičky a prvků */
+    --bg-main: #1a1a1a;
+    --bg-card: #222222;
+    --bg-nav: #111111;
     
-    --text-main: #e0e0e0;         /* Hlavní text */
-    --text-muted: #aaa;           /* Šedý text */
+    --text-main: #e0e0e0;
+    --text-muted: #aaa;
     
-    --accent: #005f87;            /* Tmavší modrá */
-    --accent-hover: #3498db;      /* Svítivá modrá */
+    --accent: #005f87;
+    --accent-hover: #3498db;
     
-    --border: #333;               /* Barva rámečků */
-    --shadow: rgba(0,0,0,0.5);    /* Stín */
+    --border: #333;
+    --shadow: rgba(0,0,0,0.5);
 }
 
-/* --- SVĚTLÝ REŽIM (PŘIDÁVÁ SE TŘÍDOU) --- */
+/* --- SVĚTLÝ REŽIM (MODERNÍ TECH - BAREVNĚJŠÍ) --- */
 body.light-mode {
-    --bg-main: #f0f2f5;           /* Světle šedá (jako papír) */
-    --bg-card: #ffffff;           /* Bílé karty */
-    --bg-nav: #e1e4e8;            /* Světlejší patička */
+    /* 1. Pozadí: Velmi jemná namodralá (vypadá moderněji než šedá) */
+    --bg-main: #f0f4f8;           
     
-    --text-main: #1a1a1a;         /* Tmavý text (černá) */
-    --text-muted: #555;           /* Tmavší šedá */
+    /* 2. Karty: Čistě bílá, aby obsah zářil */
+    --bg-card: #ffffff;           
     
-    --accent: #005f87;            /* Modrá zůstává (je dobře čitelná) */
-    --accent-hover: #0077b5;      /* Trochu tmavší modrá pro hover na bílé */
+    /* 3. Patička: Světle modro-šedá */
+    --bg-nav: #d9e2ec;            
     
-    --border: #ccc;               /* Světlé rámečky */
-    --shadow: rgba(0,0,0,0.1);    /* Jemnější stín */
+    /* 4. TEXT: Místo černé použijeme velmi tmavou modrou (je to příjemnější) */
+    --text-main: #102a43;         
+    --text-muted: #486581;        
+    
+    /* 5. AKCENT: Výrazná "Elektrická modrá" */
+    --accent: #0077cc;            
+    --accent-hover: #005299;      
+    
+    /* 6. Rámečky a stíny: Stín bude mít nádech barvy, ne jen černá špína */
+    --border: #bcccdc;            
+    --shadow: rgba(16, 42, 67, 0.15); /* Stín do modra */
 }
 
 /* =========================================
    1. GLOBÁLNÍ STYLY
    ========================================= */
 body {
-    /* ZMĚNA: Použijeme proměnnou místo pevné barvy */
-    background-color: var(--bg-main); 
+    background-color: var(--bg-main);
     color: var(--text-main);
-    
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s; /* Plynulý přechod */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* =========================================
@@ -54,71 +65,75 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #005f87;
+    background: var(--accent);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #3498db;
+    background: var(--accent-hover);
 }
 
 /* =========================================
-   3. ANIMACE LOGA (Efekt kreslení perem)
+   3. ANIMACE LOGA
    ========================================= */
-
 @keyframes drawLines {
-    to {
-        stroke-dashoffset: 0;
-    }
+    to { stroke-dashoffset: 0; }
 }
 
-/* Zde je hlavní změna: 
-   Snížili jsme 3000 na 400. To je délka, která 
-   přibližně odpovídá délce čar v písmenech M a K.
-*/
 .animate-logo path {
     stroke-dasharray: 400; 
     stroke-dashoffset: 400;
-    fill: none; /* Důležité: aby se nevyplňoval vnitřek */
+    fill: none; 
 }
 
-/* 1. Písmeno M */
 .animate-logo path:nth-child(1) {
-    /* M se kreslí 1.5 sekundy */
     animation: drawLines 1.0s ease-in-out forwards;
 }
 
-/* 2. Písmeno K */
 .animate-logo path:nth-child(2) {
-    /* K se kreslí také 1.5 sekundy */
     animation: drawLines 1.0s ease-in-out forwards;
-    
-    /* Začne se kreslit, až když je M skoro hotové (po 1.2s) */
     animation-delay: 0.8s; 
 }
+
 /* =========================================
-   4. SEKCIE
+   4. SEKCIE (KARTY) - ZDE BYLA CHYBA
    ========================================= */
 section {
-    /* ... */
-    background: var(--bg-card); /* Místo #222222 */
-    box-shadow: 0 10px 30px var(--shadow); /* Místo rgba(...) */
-    /* ... */
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    
+    /* Použití proměnných pro zachování vzhledu karty */
+    background: var(--bg-card); 
+    box-shadow: 0 10px 30px var(--shadow);
+    
+    border-radius: 8px;
+    text-align: center;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 h2 {
-    color: var(--accent); /* Místo #005f87 */
+    color: var(--accent); 
     border-bottom: 2px solid var(--accent);
-    /* ... */
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 h3 {
-    color: var(--text-main); /* Místo #ffffff */
-    /* ... */
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 /* =========================================
@@ -148,39 +163,35 @@ h3 {
 }
 
 .nav-item:hover, .nav-item.active {
-    color: #3498db;
-    border-right: 2px solid #3498db;
-    text-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
+    color: var(--accent-hover);
+    border-right: 2px solid var(--accent-hover);
 }
 
 @media (max-width: 1100px) {
-    .side-nav {
-        display: none; 
-    }
+    .side-nav { display: none; }
 }
 
 /* =========================================
    6. SKILL TAGS
    ========================================= */
 .skill-tag {
-    background: rgba(0, 95, 135, 0.1);
-    border: 1px solid #005f87;
-    color: #005f87;
+    background: rgba(0, 95, 135, 0.1); /* Tady necháme transparentní modrou */
+    border: 1px solid var(--accent);
+    color: var(--accent);
     padding: 8px 16px;
     border-radius: 4px;
     display: inline-block;
     margin: 5px;
     font-size: 0.9rem;
     font-weight: bold;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s;
     cursor: default;
 }
 
 .skill-tag:hover {
-    background: #005f87;
+    background: var(--accent);
     color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 95, 135, 0.3);
 }
 
 /* =========================================
@@ -188,36 +199,93 @@ h3 {
    ========================================= */
 #projects div[style*="border: 1px solid"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bg-card) !important; /* Vynucení barvy pozadí */
+    border-color: var(--border) !important;
 }
 
 #projects div[style*="border: 1px solid"]:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    border-color: #3498db !important;
+    box-shadow: 0 10px 20px var(--shadow);
+    border-color: var(--accent-hover) !important;
 }
 
 /* =========================================
    8. CERTIFIKÁTY
    ========================================= */
 .cert-card {
-    /* ... */
-    border: 1px solid var(--border); /* Místo #333 */
-    /* ... */
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 320px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cert-card:hover {
+    border-color: var(--accent-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.cert-content {
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.cert-content i {
+    font-size: 28px;
+    color: var(--accent-hover);
+    margin-bottom: 5px;
+}
+
+.cert-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.cert-info p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
 }
 
 .cert-footer {
-    background: var(--bg-nav); /* Místo #111 */
-    /* ... */
-    border-top: 1px solid var(--border); /* Místo #333 */
+    background: var(--bg-nav);
+    padding: 12px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--accent-hover);
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
 }
 
 /* =========================================
-   9. KONTAKT
+   9. KONTAKT & TOOLTIPY
    ========================================= */
+footer#contact {
+    background-color: var(--bg-nav) !important; /* Přebije inline styl */
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
 
 .tooltip-link {
-    position: relative; /* Nutné pro pozicování bubliny */
-    color: #005f87;
+    position: relative;
+    color: var(--accent);
     font-size: 35px;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -225,33 +293,25 @@ h3 {
 }
 
 .tooltip-link:hover {
-    color: #3498db;
+    color: var(--accent-hover);
     transform: scale(1.1);
 }
-footer#contact {
-    background-color: var(--bg-nav);
-    padding: 60px 20px;
-    text-align: center;
-    color: var(--text-muted);
-}
-/* --- TOTO TI CHYBĚLO: Vzhled bubliny --- */
+
 .tooltip-link::after {
-    content: attr(data-tooltip); /* Vezme text z HTML atributu */
+    content: attr(data-tooltip);
     position: absolute;
-    bottom: 120%; /* Umístění nad ikonou */
+    bottom: 120%;
     left: 50%;
-    transform: translateX(-50%); /* Vycentrování */
-    
-    background-color: #333;
+    transform: translateX(-50%);
+    background-color: #333; /* Tooltip necháme vždy tmavý */
     color: #fff;
     padding: 6px 10px;
     border-radius: 4px;
-    font-size: 14px; /* Zvětšeno pro čitelnost */
+    font-size: 14px;
     font-family: 'Segoe UI', sans-serif;
     font-weight: normal;
     white-space: nowrap;
     pointer-events: none;
-    
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -259,7 +319,6 @@ footer#contact {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Malá šipka pod bublinou (volitelné, pro hezčí efekt) */
 .tooltip-link::before {
     content: '';
     position: absolute;
@@ -269,52 +328,171 @@ footer#contact {
     border-width: 6px;
     border-style: solid;
     border-color: #333 transparent transparent transparent;
-    
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
 }
 
-/* Zobrazení při najetí myší */
 .tooltip-link:hover::after,
 .tooltip-link:hover::before {
     opacity: 1;
     visibility: visible;
-    bottom: 135%; /* Jemný posun nahoru */
+    bottom: 135%;
 }
 
 .tooltip-link:hover::before {
-    bottom: 125%; /* Šipka se posune o trochu méně */
+    bottom: 125%;
 }
+
 /* =========================================
-   10. MODÁLNÍ OKNO - HOLD TO ZOOM
+   10. MODÁLNÍ OKNO (ZOOM)
    ========================================= */
-
-/* --- ZOOM MODAL STYLY --- */
-
-/* Přidej nebo uprav toto ve svém CSS souboru */
 #modal-image-container {
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Zajistí, že startovní pozice je střed */
+    width: 100%;
+    height: 100%;
 }
 
 #modalImg {
-    /* Důležité: transformace se musí dít od středu */
     transform-origin: center center; 
-    transition: transform 0.1s ease-out; /* Volitelné: pro hladší pohyb */
+    transition: transform 0.1s ease-out;
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 
-/* Třída, kterou JS přidá, když držíš myš */
 #modal-image-container.grabbing {
     cursor: grabbing; 
 }
 
-/* Skrytí loaderu, když není potřeba (řeší JS, ale pro jistotu) */
 #modalLoader {
     pointer-events: none;
 }
+/* =========================================
+   STYLY PRO VYČIŠTĚNÉ HTML (Timeline, Header, Projects)
+   ========================================= */
+
+/* HLAVIČKA */
+.main-header {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: var(--bg-nav);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+}
+.main-header h1 {
+    font-size: 3.5rem;
+    color: var(--text-main);
+    margin: 0;
+    letter-spacing: -1px;
+}
+.main-header .separator {
+    width: 50px;
+    height: 4px;
+    background: var(--accent);
+    margin: 20px auto;
+}
+.main-header .subtitle {
+    font-size: 1.1rem;
+    color: var(--accent);
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* ABOUT SECTION */
+.text-primary {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+.text-secondary {
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+strong {
+    color: var(--text-main);
+}
+
+/* TIMELINE (ZKUŠENOSTI) */
+.timeline { max-width: 800px; margin: 0 auto; text-align: left; }
+.timeline-item {
+    border-left: 3px solid #ccc;
+    padding-left: 25px;
+    margin-bottom: 40px;
+    position: relative;
+}
+/* Barvy firem */
+.timeline-item.ice { border-left-color: #d946d9; }
+.timeline-item.bonatrans { border-left-color: #3498db; }
+.timeline-item.mayr { border-left-color: #b0b0b0; }
+
+.timeline-icon {
+    position: absolute; left: -11px; top: 0; width: 20px; height: 20px;
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    color: white;
+}
+.ice-bg { background: #d946d9; box-shadow: 0 0 10px rgba(217, 70, 217, 0.5); }
+.bona-bg { background: #3498db; box-shadow: 0 0 10px rgba(52, 152, 219, 0.5); }
+.mayr-bg { background: #b0b0b0; }
+
+.date { margin: 0; font-weight: bold; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px; }
+.ice-text { color: #d946d9; }
+.bona-text { color: #3498db; }
+.mayr-text { color: #b0b0b0; }
+
+.timeline-item h3 { margin: 5px 0; color: var(--text-main); }
+.company { margin: 0; font-weight: bold; color: var(--text-muted); }
+.description { font-size: 0.95em; color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
+.duties { font-size: 0.9em; color: var(--text-muted); margin-top: 8px; padding-left: 20px; line-height: 1.5; }
+
+/* FOCUS KARTY */
+.focus-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.focus-card {
+    flex: 1; min-width: 250px; padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-main);
+    text-align: left;
+    transition: transform 0.3s;
+}
+.focus-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px var(--shadow); }
+.icon-blue { font-size: 28px; color: #005f87; margin-bottom: 20px; }
+.icon-purple { font-size: 28px; color: #d946d9; margin-bottom: 20px; }
+.icon-green { font-size: 28px; color: #009900; margin-bottom: 20px; }
+.title-blue { margin: 0 0 10px 0; color: #3498db; font-size: 1.3em; }
+.title-purple { margin: 0 0 10px 0; color: #d946d9; font-size: 1.3em; }
+.title-green { margin: 0 0 10px 0; color: #4cd964; font-size: 1.3em; }
+
+/* PROJEKTOVÉ KARTY */
+.projects-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+.project-card {
+    flex: 1; min-width: 300px; max-width: 450px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 8px;
+    background: var(--bg-card);
+    text-align: left;
+    display: flex; flex-direction: column;
+    transition: all 0.3s;
+}
+.project-card:hover {
+    transform: translateY(-10px); box-shadow: 0 10px 20px var(--shadow); border-color: var(--accent) !important;
+}
+.project-subtitle { font-size: 0.9em; color: var(--text-muted); margin-top: 0; margin-bottom: 15px; font-weight: bold; }
+.project-img {
+    width: 100%; height: 200px; object-fit: cover; border-radius: 5px;
+    cursor: pointer; margin-bottom: 15px; border: 1px solid var(--border);
+}
+
+/* FOOTER */
+.social-links { display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; }
+.copyright { margin-top: 40px; font-size: 13px; color: var(--text-muted); }

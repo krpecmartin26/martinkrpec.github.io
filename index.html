@@ -15,26 +15,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
     <button id="theme-toggle" style="
-    position: fixed; 
-    top: 20px; 
-    right: 30px; 
-    z-index: 1001; 
-    background: var(--bg-card); 
-    border: 1px solid var(--accent); 
-    color: var(--accent); 
-    padding: 10px 15px; 
-    border-radius: 50%; 
-    cursor: pointer; 
-    transition: all 0.3s ease;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-">
-    <i class="fas fa-sun"></i>
-</button>
+        position: fixed; 
+        top: 20px; 
+        right: 30px; 
+        z-index: 1001; 
+        background: var(--bg-card); 
+        border: 1px solid var(--accent); 
+        color: var(--accent); 
+        padding: 10px; 
+        border-radius: 50%; 
+        cursor: pointer; 
+        transition: all 0.3s ease;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    ">
+        <i class="fas fa-sun"></i>
+    </button>
 </head>
 
 <body>
@@ -47,15 +48,11 @@
 </svg>
 
 <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1a1a1a; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 20000; transition: opacity 0.5s;">
-    
     <svg width="150" style="height: auto; max-width: 80vw;" class="animate-logo" viewBox="0 0 140 110">
         <path d="M20 100 V10 L50 50 L80 10 V100" fill="none" stroke="#3498db" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
-        
         <path d="M70 10 V100 M70 55 L120 10 M70 55 L120 100" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
-
     <div id="preloader-binary" style="margin-top: 30px; font-family: 'Courier New', monospace; color: #005f87; font-size: 14px; letter-spacing: 4px; font-weight: bold; min-height: 20px;"></div>
-
 </div>
 
 <nav class="side-nav">
@@ -66,93 +63,71 @@
     <a href="#contact" class="nav-item"><span>Contact</span></a>
 </nav>
 
-<header style="padding: 5rem 2rem; text-align: center; background: #1a1a1a; border-bottom: 1px solid #333;">
-    <h1 style="font-size: 3.5rem; color: #ffffff; margin: 0; letter-spacing: -1px;">Martin Krpec</h1>
-    <div style="width: 50px; height: 4px; background: #005f87; margin: 20px auto;"></div>
-    <p style="font-size: 1.1rem; color: #005f87; font-weight: bold; letter-spacing: 3px; text-transform: uppercase;">PLC Programmer | HMI Developer</p>
+<header class="main-header">
+    <h1>Martin Krpec</h1>
+    <div class="separator"></div>
+    <p class="subtitle">PLC Programmer | HMI Developer</p>
 </header>
 
 <main>
    <section id="about" class="reveal">
         <h2>About Me</h2>
-        
-        <p style="font-size: 1.1em; line-height: 1.6; color: #ddd; margin-bottom: 20px;">
+        <p class="text-primary">
             I am an Automation Engineer bridging the gap between standard PLC logic and modern HMI web technologies. 
             Specialized in the <strong>Siemens ecosystem</strong> (TIA Portal, WinCC Unified) with a strong focus on JavaScript integration. 
             I am a flexible troubleshooter, experienced in international on-site commissioning and delivering reliable code under tight deadlines.
         </p>
-
-        <p style="font-size: 1em; line-height: 1.6; color: #aaa;">
+        <p class="text-secondary">
             Beyond the technical world, I am an explorer at heart. Whether it is riding my motorcycle across Southern Europe, climbing peaks in the Austrian and Italian Alps, or backpacking through Southeast Asia, I constantly seek new perspectives. 
-            This passion for travel has taught me how to <strong>adapt to different cultures</strong> and embrace the unknown—a mindset I bring to every new project, whether it involves mastering a new technology or navigating a complex start-up on the other side of the world.
+            This passion for travel has taught me how to <strong>adapt to different cultures</strong> and embrace the unknown—a mindset I bring to every new project.
         </p>
     </section>
 
     <section id="experience" class="reveal">
         <h2>My Professional Journey</h2>
-        <div class="timeline" style="max-width: 800px; margin: 0 auto; text-align: left;">
+        <div class="timeline">
             
-            <div style="border-left: 3px solid #d946d9; padding-left: 25px; margin-bottom: 40px; position: relative;">
-                
-                <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #d946d9; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(217, 70, 217, 0.5);">
-                    <i class="fas fa-code" style="color: white; font-size: 10px;"></i>
-                </div>
-                
-                <p style="margin: 0; font-weight: bold; color: #d946d9; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px;">05/2025 – Present</p>
-                <h3 style="margin: 5px 0; color: #ffffff;">SW Developer</h3>
-                <p style="margin: 0; font-weight: bold; color: #e0e0e0;">ICE Industrial Services</p>
-                
-                <p style="font-size: 0.95em; color: #ccc; margin-top: 10px; line-height: 1.6;">
+            <div class="timeline-item ice">
+                <div class="timeline-icon ice-bg"><i class="fas fa-code"></i></div>
+                <p class="date ice-text">05/2025 – Present</p>
+                <h3>SW Developer</h3>
+                <p class="company">ICE Industrial Services</p>
+                <p class="description">
                     Transitioned into full-stack industrial software development. Delivering complex automation solutions for major automotive clients (LEAR, Valeo).
                 </p>
-                
-                <ul style="font-size: 0.9em; color: #bbb; margin-top: 8px; list-style-type: disc; padding-left: 20px; line-height: 1.5;">
-                    <li style="margin-bottom: 5px;"><strong style="color: #d946d9;">Specialization:</strong> Advanced HMI development using WinCC Unified & JavaScript.</li>
-                    <li style="margin-bottom: 5px;"><strong style="color: #d946d9;">Full Cycle:</strong> From offline software preparation to on-site PLC commissioning.</li>
-                    <li><strong style="color: #d946d9;">R&D:</strong> Pilot testing of new Siemens technologies and standardizing libraries.</li>
+                <ul class="duties">
+                    <li><strong class="ice-text">Specialization:</strong> Advanced HMI development using WinCC Unified & JavaScript.</li>
+                    <li><strong class="ice-text">Full Cycle:</strong> From offline software preparation to on-site PLC commissioning.</li>
+                    <li><strong class="ice-text">R&D:</strong> Pilot testing of new Siemens technologies.</li>
                 </ul>
             </div>
 
-            <div style="border-left: 3px solid #3498db; padding-left: 25px; margin-bottom: 40px; position: relative;">
-                
-                <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #3498db; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);">
-                    <i class="fas fa-microchip" style="color: white; font-size: 10px;"></i>
-                </div>
-                
-                <p style="margin: 0; font-weight: bold; color: #3498db; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px;">05/2021 – 04/2025</p>
-                <h3 style="margin: 5px 0; color: #ffffff;">Technician Electronic</h3>
-                <p style="margin: 0; font-weight: bold; color: #e0e0e0;">Bonatrans Group a.s.</p>
-                
-                <p style="font-size: 0.95em; color: #ccc; margin-top: 10px; line-height: 1.6;">
-                    Technical lead for the <strong style="color: #fff;">Wheel Rolling Line</strong>. Responsible for keeping high-availability production running and managing long-term upgrades.
+            <div class="timeline-item bonatrans">
+                <div class="timeline-icon bona-bg"><i class="fas fa-microchip"></i></div>
+                <p class="date bona-text">05/2021 – 04/2025</p>
+                <h3>Technician Electronic</h3>
+                <p class="company">Bonatrans Group a.s.</p>
+                <p class="description">
+                    Technical lead for the <strong>Wheel Rolling Line</strong>. Responsible for keeping high-availability production running and managing long-term upgrades.
                 </p>
-                
-                <ul style="font-size: 0.9em; color: #bbb; margin-top: 8px; list-style-type: disc; padding-left: 20px; line-height: 1.5;">
-                    <li style="margin-bottom: 5px;"><strong style="color: #3498db;">Modernization:</strong> 4-year continuous upgrade project of legacy control systems.</li>
-                    <li style="margin-bottom: 5px;"><strong style="color: #3498db;">Diagnostics:</strong> Deep-level troubleshooting of S7-300/1500, hydraulic drives, and safety circuits.</li>
-                    <li style="margin-bottom: 5px;"><strong style="color: #3498db;">Optimization:</strong> Refactoring logic to reduce cycle times and micro-stoppages.</li>
-                    <li><strong style="color: #3498db;">Resource Management:</strong> Specifying and ordering critical spare parts to minimize downtime risks.</li>
+                <ul class="duties">
+                    <li><strong class="bona-text">Modernization:</strong> 4-year continuous upgrade project.</li>
+                    <li><strong class="bona-text">Diagnostics:</strong> Deep-level troubleshooting of S7-300/1500.</li>
+                    <li><strong class="bona-text">Optimization:</strong> Refactoring logic to reduce cycle times.</li>
                 </ul>
             </div>
 
-            <div style="border-left: 3px solid #b0b0b0; padding-left: 25px; position: relative;">
-                
-                <div style="position: absolute; left: -11px; top: 0; width: 20px; height: 20px; background: #b0b0b0; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
-                    <i class="fas fa-bolt" style="color: #111; font-size: 10px;"></i>
-                </div>
-                
-                <p style="margin: 0; font-weight: bold; color: #b0b0b0; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px;">01/2018 – 04/2021</p>
-                <h3 style="margin: 5px 0; color: #ffffff;">Electrician</h3>
-                <p style="margin: 0; font-weight: bold; color: #e0e0e0;">Mayr-Melnhof Holz Paskov</p>
-                
-                <p style="font-size: 0.95em; color: #ccc; margin-top: 10px; line-height: 1.6;">
+            <div class="timeline-item mayr">
+                <div class="timeline-icon mayr-bg"><i class="fas fa-bolt"></i></div>
+                <p class="date mayr-text">01/2018 – 04/2021</p>
+                <h3>Electrician</h3>
+                <p class="company">Mayr-Melnhof Holz Paskov</p>
+                <p class="description">
                     The foundation of my technical career. Gained essential hands-on experience in industrial electrical maintenance and safety.
                 </p>
-                
-                <ul style="font-size: 0.9em; color: #bbb; margin-top: 8px; list-style-type: disc; padding-left: 20px; line-height: 1.5;">
-                    <li style="margin-bottom: 5px;">Maintenance of large-scale wood processing machinery.</li>
-                    <li style="margin-bottom: 5px;">Working with frequency converters and soft starters.</li>
-                    <li>Shift work requiring independent decision-making under pressure.</li>
+                <ul class="duties">
+                    <li>Maintenance of large-scale wood processing machinery.</li>
+                    <li>Working with frequency converters and soft starters.</li>
                 </ul>
             </div>
 
@@ -161,110 +136,57 @@
 
     <section id="focus" class="reveal">
         <h2>Future Focus</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-            
-            <div style="flex: 1; min-width: 250px; padding: 25px; border: 1px solid #333; border-radius: 8px; background: #000; text-align: left;">
-                <i class="fas fa-laptop-code" style="font-size: 28px; color: #005f87; margin-bottom: 20px;"></i>
-                <h3 style="margin: 0 0 10px 0; color: #3498db; font-size: 1.3em;">Remote & Offline</h3>
-                <p style="font-size: 0.95em; margin: 0; color: #ccc; line-height: 1.6;">
-                    Shifting focus to high-quality <strong>Offline Preparation</strong>. My goal is to maximize remote efficiency and minimize physical on-site time through precise simulation and code testing.
-                </p>
+        <div class="focus-grid">
+            <div class="focus-card">
+                <i class="fas fa-laptop-code icon-blue"></i>
+                <h3 class="title-blue">Remote & Offline</h3>
+                <p>Shifting focus to high-quality <strong>Offline Preparation</strong> to maximize remote efficiency.</p>
             </div>
-
-            <div style="flex: 1; min-width: 250px; padding: 25px; border: 1px solid #333; border-radius: 8px; background: #000; text-align: left;">
-                <i class="fas fa-code" style="font-size: 28px; color: #d946d9; margin-bottom: 20px;"></i>
-                <h3 style="margin: 0 0 10px 0; color: #d946d9; font-size: 1.3em;">Web Development</h3>
-                <p style="font-size: 0.95em; margin: 0; color: #ccc; line-height: 1.6;">
-                    My ambition lies in building modern <strong>websites and web applications</strong>. I am actively expanding my skills in HTML, CSS, and JavaScript to create professional, responsive webs — both for industrial interfaces (Unified) and standalone web projects.
-                </p>
+            <div class="focus-card">
+                <i class="fas fa-code icon-purple"></i>
+                <h3 class="title-purple">Web Development</h3>
+                <p>Building modern <strong>websites and web applications</strong> using HTML, CSS, and JS.</p>
             </div>
-
-            <div style="flex: 1; min-width: 250px; padding: 25px; border: 1px solid #333; border-radius: 8px; background: #000; text-align: left;">
-                <i class="fas fa-brain" style="font-size: 28px; color: #009900; margin-bottom: 20px;"></i>
-                <h3 style="margin: 0 0 10px 0; color: #4cd964; font-size: 1.3em;">AI Integration</h3>
-                <p style="font-size: 0.95em; margin: 0; color: #ccc; line-height: 1.6;">
-                    Exploring the potential of <strong>Artificial Intelligence</strong> in automation. Leveraging AI tools for smarter code generation, data analysis, and predictive maintenance strategies.
-                </p>
+            <div class="focus-card">
+                <i class="fas fa-brain icon-green"></i>
+                <h3 class="title-green">AI Integration</h3>
+                <p>Exploring <strong>Artificial Intelligence</strong> in automation and code generation.</p>
             </div>
-
         </div>
     </section>
 
     <section id="projects" class="reveal">
         <h2>My Projects</h2>
-        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+        <div class="projects-grid">
             
-            <div style="flex: 1; min-width: 300px; max-width: 450px; border: 1px solid #333; padding: 20px; border-radius: 8px; background: #222; text-align: left; display: flex; flex-direction: column;">
-                <h3 style="color: #3498db; margin-bottom: 5px;">Bonatrans Group</h3>
-                <p style="font-size: 0.9em; color: #888; margin-top: 0; margin-bottom: 15px; font-weight: bold;">Wheel Rolling Line Modernization (4 Years)</p>
-                
-                <img src="bonatrans.jpg" onclick="openModal(this.src)" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; cursor: pointer; margin-bottom: 15px; border: 1px solid #555;" onerror="this.style.display='none'">
-                
-                <p style="font-size: 0.95em; color: #ddd; line-height: 1.6;">
-                    Long-term technical supervision of the wheelset rolling line. 
-                    I participated in the <strong>continuous modernization</strong> of the control system, transitioning from legacy technologies to modern standards.
-                </p>
-                <ul style="font-size: 0.9em; color: #aaa; margin-top: 10px; padding-left: 20px;">
-                    <li style="margin-bottom: 5px;">Optimizing cycle times for heavy industrial machinery.</li>
-                    <li style="margin-bottom: 5px;">Integration of new sensors and safety zones without stopping production.</li>
-                    <li style="margin-bottom: 5px;">Complex troubleshooting of hydraulic and electric drive systems.</li>
-                </ul>
+            <div class="project-card">
+                <h3 class="title-blue">Bonatrans Group</h3>
+                <p class="project-subtitle">Wheel Rolling Line Modernization</p>
+                <img src="bonatrans.jpg" onclick="openModal(this.src)" class="project-img" onerror="this.style.display='none'">
+                <p class="description">Long-term technical supervision and continuous modernization of the control system.</p>
             </div>
 
-            <div style="flex: 1; min-width: 300px; max-width: 450px; border: 1px solid #333; padding: 20px; border-radius: 8px; background: #222; text-align: left; display: flex; flex-direction: column;">
-                <h3 style="color: #3498db; margin-bottom: 5px;">LEAR Corporation</h3>
-                <p style="font-size: 0.9em; color: #888; margin-top: 0; margin-bottom: 15px; font-weight: bold;">JIT Seat Assembly Line – Project Takeover</p>
-                
-                
-                
-                <p style="font-size: 0.95em; color: #ddd; line-height: 1.6;">
-                    Originally deployed for commissioning support during the handover phase (May 2025). 
-                    Following the departure of the lead programmer, I <strong>took full ownership</strong> of the software.
-                </p>
-                <ul style="font-size: 0.9em; color: #aaa; margin-top: 10px; padding-left: 20px;">
-                    <li style="margin-bottom: 5px;">Code refactoring and stabilization after handover.</li>
-                    <li style="margin-bottom: 5px;">Implementation of additional customer features (Change Requests).</li>
-                    <li style="margin-bottom: 5px;">Currently managing the second phase of line upgrades on-site.</li>
-                </ul>
+            <div class="project-card">
+                <h3 class="title-blue">LEAR Corporation</h3>
+                <p class="project-subtitle">JIT Seat Assembly Line</p>
+                <p class="description">Took full ownership of the software. Code refactoring and stabilization after handover.</p>
             </div>
-
         
-<div style="flex: 1; min-width: 300px; max-width: 450px; border: 1px solid #333; padding: 20px; border-radius: 8px; background: #222; text-align: left; display: flex; flex-direction: column;">
-                <h3 style="color: #3498db; margin-bottom: 5px;">Coral</h3>
-                <p style="font-size: 0.9em; color: #888; margin-top: 0; margin-bottom: 15px; font-weight: bold;">R&D – WinCC Unified Pilot Phase</p>
-                
-                <img src="coral.jpg" onclick="openModal(this.src)" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; cursor: pointer; margin-bottom: 15px; border: 1px solid #555;" onerror="this.style.display='none'">
-                
-                <p style="font-size: 0.95em; color: #ddd; line-height: 1.6;">
-                    Intensive pilot project focused on mastering the <strong>Siemens WinCC Unified</strong> platform. 
-                    Served as a technical preparation and feasibility study for future large-scale deployments.
-                </p>
-                <ul style="font-size: 0.9em; color: #aaa; margin-top: 10px; padding-left: 20px;">
-                    <li style="margin-bottom: 5px;">Deep-dive into JavaScript scripting for HMI customization.</li>
-                    <li style="margin-bottom: 5px;">Creating reusable Faceplates and UI concepts.</li>
-                    <li style="margin-bottom: 5px;">Rapid prototyping of visualization standards.</li>
-                </ul>
+            <div class="project-card">
+                <h3 class="title-blue">Coral</h3>
+                <p class="project-subtitle">R&D – WinCC Unified Pilot</p>
+                <img src="coral.jpg" onclick="openModal(this.src)" class="project-img" onerror="this.style.display='none'">
+                <p class="description">Intensive pilot project focused on mastering the <strong>Siemens WinCC Unified</strong> platform.</p>
             </div>
 
-            <div style="flex: 1; min-width: 300px; max-width: 450px; border: 1px solid #333; padding: 20px; border-radius: 8px; background: #222; text-align: left; display: flex; flex-direction: column;">
-                <h3 style="color: #3498db; margin-bottom: 5px;">Valeo</h3>
-                <p style="font-size: 0.9em; color: #888; margin-top: 0; margin-bottom: 15px; font-weight: bold;">Press Line Interconnection (820m)</p>
-                
-                <img src="valeo.jpg" onclick="openModal(this.src)" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; cursor: pointer; margin-bottom: 15px; border: 1px solid #555;" onerror="this.style.display='none'">
-                
-                <p style="font-size: 0.95em; color: #ddd; line-height: 1.6;">
-                    Complex intralogistics system connecting molding presses with operator stations via <strong>820 meters of conveyors</strong>. 
-                    I transitioned from HMI development to full on-site PLC commissioning.
-                </p>
-                <ul style="font-size: 0.9em; color: #aaa; margin-top: 10px; padding-left: 20px;">
-                    <li style="margin-bottom: 5px;">Applied advanced WinCC Unified skills in a production environment.</li>
-                    <li style="margin-bottom: 5px;"><strong>On-site commissioning</strong> (Nov 2025 – Present).</li>
-                    <li style="margin-bottom: 5px;">Troubleshooting PLC logic, sensors, and drive systems live.</li>
-                </ul>
+            <div class="project-card">
+                <h3 class="title-blue">Valeo</h3>
+                <p class="project-subtitle">Press Line Interconnection</p>
+                <img src="valeo.jpg" onclick="openModal(this.src)" class="project-img" onerror="this.style.display='none'">
+                <p class="description">Complex intralogistics system connecting molding presses. Full on-site PLC commissioning.</p>
             </div>
 
- </div>
-
+        </div>
     </section>
 
     <section id="skills" class="reveal">
@@ -280,8 +202,8 @@
     </section>
 
     <section id="certifications" class="reveal" style="padding: 60px 20px;">
-        <h2 style="text-align: center; color: #3498db; text-transform: uppercase; letter-spacing: 2px;">Certifications</h2>
-        <div style="width: 100px; height: 2px; background: #3498db; margin: 10px auto 40px auto;"></div>
+        <h2 style="text-align: center; color: var(--accent); text-transform: uppercase; letter-spacing: 2px;">Certifications</h2>
+        <div style="width: 100px; height: 2px; background: var(--accent); margin: 10px auto 40px auto;"></div>
         
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto;">
             
@@ -335,7 +257,7 @@
 
             <div class="cert-card" onclick="openModal('abb_basic.png')">
                 <div class="cert-content">
-                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-terminal"></i>
                     <div class="cert-info"><h3>ABB IRC5</h3><p>Basic programming</p></div>
                 </div>
                 <div class="cert-footer">View Document</div>
@@ -346,13 +268,10 @@
 </main>
 
 <div id="imageModal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); justify-content: center; align-items: center; flex-direction: column;">
-    
     <span onclick="closeModal()" style="position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 10001;">&times;</span>
 
     <div id="modalLoader" style="text-align: center; position: absolute; z-index: 10002;">
-        <svg width="100" height="100">
-            <use xlink:href="#logo-mk"></use>
-        </svg>
+        <svg width="100" height="100"><use xlink:href="#logo-mk"></use></svg>
         <div id="modal-binary" style="margin-top: 15px; font-family: monospace; color: #3498db; font-size: 14px; letter-spacing: 2px;"></div>
         <p style="font-family: Arial; font-size: 10px; color: #555; letter-spacing: 3px; margin-top: 5px;">LOADING DATA...</p>
     </div>
@@ -362,28 +281,15 @@
     </div>
 </div>
 
-<footer id="contact" style="background-color: #111; padding: 60px 20px; text-align: center;">
-    <h2 style="color: #005f87; margin-bottom: 30px;">Contact Me</h2>
-    <div style="display: flex; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap;">
-        
-        <a href="https://www.linkedin.com/in/martin-krpec/" target="_blank" class="tooltip-link" data-tooltip="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-        </a>
-        
-        <a href="mailto:krpecmartin26@gmail.com" class="tooltip-link" data-tooltip="Email">
-            <i class="fas fa-envelope"></i>
-        </a>
-        
-        <a href="https://wa.me/420737933650" target="_blank" class="tooltip-link" data-tooltip="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        
-        <a href="https://www.facebook.com/profile.php?id=61555037739893" target="_blank" class="tooltip-link" data-tooltip="Facebook">
-            <i class="fab fa-facebook"></i>
-        </a>
-
+<footer id="contact">
+    <h2>Contact Me</h2>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/martin-krpec/" target="_blank" class="tooltip-link" data-tooltip="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:krpecmartin26@gmail.com" class="tooltip-link" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/420737933650" target="_blank" class="tooltip-link" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61555037739893" target="_blank" class="tooltip-link" data-tooltip="Facebook"><i class="fab fa-facebook"></i></a>
     </div>
-    
+    <p class="copyright">&copy; 2026 Martin Krpec | Built with Github</p>
 </footer>
 
 <script src="script.js"></script>
