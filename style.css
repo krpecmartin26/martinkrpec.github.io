@@ -137,44 +137,60 @@ ul {
 }
 
 /* =========================================
-   5. NOVÁ NAVIGACE (OPRAVENÁ - MODRÁ)
+   5. NOVÁ NAVIGACE (FINAL - ZAROVNÁNO)
    ========================================= */
-/* 1. Odsazení celého webu dolů, aby se obsah neschoval pod lištu */
 body {
     padding-top: 70px; 
 }
 
-/* 2. Samotná lišta */
 #navbar {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0; /* ZMĚNA: Toto zajistí, že lišta nikdy nepřeteče doprava */
-    height: 70px; /* Pevná výška */
-    
-    padding: 0 30px; /* Odsazení obsahu uvnitř lišty */
-    box-sizing: border-box; /* Pojistka pro padding */
+    right: 0;
+    height: 70px;
+    padding: 0 30px; 
     
     display: flex;
-    justify-content: flex-end; /* Vše zarovnáme doprava */
+    /* Toto zajistí, že Hamburger je vlevo a Tlačítko vpravo */
+    justify-content: space-between; 
     align-items: center;
     
     z-index: 1000;
-    background: var(--accent); /* MODRÁ BARVA */
+    background: var(--accent); /* Modrá */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* 3. Odkazy */
+/* Styl pro tlačítko v navigaci */
+.theme-btn-nav {
+    background: none;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    margin-left: 20px; /* Odstup od menu */
+}
+
+.theme-btn-nav:hover {
+    background: rgba(255,255,255,0.2);
+    transform: rotate(15deg);
+}
+
+/* Menu na PC */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 30px;
     margin: 0;
     padding: 0;
+    margin-left: auto; /* Tím natlačíme menu doprava k tlačítku */
 }
 
 .nav-link {
-    color: #ffffff; /* Bílý text na modrém */
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 15px;
@@ -184,11 +200,8 @@ body {
     position: relative;
 }
 
-.nav-link:hover {
-    opacity: 0.8;
-}
+.nav-link:hover { opacity: 0.8; }
 
-/* Aktivní odkaz (bílé podtržítko) */
 .nav-link.active::after {
     content: '';
     position: absolute;
@@ -199,70 +212,72 @@ body {
     background-color: #fff;
 }
 
-/* 4. Hamburger (Mobil) */
+/* Hamburger */
 .hamburger {
     display: none;
     cursor: pointer;
-    margin-left: 20px; /* Odstup od kraje */
 }
-
 .bar {
     display: block;
     width: 25px;
     height: 3px;
     margin: 5px auto;
+    background-color: #fff;
     transition: all 0.3s ease-in-out;
-    background-color: #fff; /* Bílé čárky */
 }
 
 /* --- MOBILNÍ VERZE --- */
 @media (max-width: 768px) {
     #navbar {
-        padding: 0 20px; /* Menší padding na mobilu */
+        padding: 0 20px;
     }
 
     .hamburger {
-        display: block; /* Ukázat hamburger */
+        display: block;
         z-index: 1002;
     }
 
-    /* Animace křížku */
+    /* Tlačítko na mobilu zůstane vpravo viditelné */
+    .theme-btn-nav {
+        z-index: 1002; /* Aby bylo nad menu */
+        border: none; /* Zjednodušíme vzhled na mobilu */
+        font-size: 22px;
+    }
+
+    /* Animace Hamburgeru */
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Rozbalovací menu */
+    /* Mobilní Menu */
     .nav-menu {
         position: fixed;
-        left: 100%; /* Schované vpravo */
+        left: 100%; 
         top: 0;
+        
+        /* ZMĚNA: justify-content: flex-start (text bude nahoře, ne uprostřed) */
         flex-direction: column;
-        justify-content: center; /* Vycentrovat odkazy svisle */
+        justify-content: flex-start; 
         align-items: center;
         
-        background-color: #1a1a1a; /* Tmavé pozadí menu */
+        background-color: #1a1a1a; 
         width: 100%;
         height: 100vh;
         
+        /* ZMĚNA: Velký padding nahoře posune text do horní třetiny */
+        padding-top: 120px; 
+        gap: 40px;
         transition: 0.4s ease;
-        padding: 0;
-        gap: 50px;
         z-index: 1001;
     }
 
     .nav-menu.active {
-        left: 0; /* Vysunout */
+        left: 0;
     }
     
     .nav-link {
-        font-size: 24px; /* Velké písmo */
-        color: var(--text-main); /* V menu bude text světlý/tmavý podle tématu */
+        font-size: 22px;
     }
-}
-/* Zajistí, že při kliknutí na odkaz se stránka posune o kousek níž, 
-   aby nadpis nebyl schovaný pod lištou */
-section {
-    scroll-margin-top: 90px;
 }
 /* =========================================
    6. SKILL TAGS
