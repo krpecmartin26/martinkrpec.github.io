@@ -353,3 +353,52 @@ window.addEventListener('scroll', () => {
         toTopBtn.classList.remove('visible');
     }
 });
+/* =========================================
+   9. MOBILNÍ MENU & SCROLL SPY (NOVÉ)
+   ========================================= */
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navLinks = document.querySelectorAll(".nav-link");
+
+// 1. Otevírání menu na mobilu
+if (hamburger) {
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    });
+}
+
+// 2. Zavření menu po kliknutí na odkaz
+if (navLinks) {
+    navLinks.forEach(n => n.addEventListener("click", () => {
+        if(hamburger) hamburger.classList.remove("active");
+        if(navMenu) navMenu.classList.remove("active");
+    }));
+}
+
+// 3. SCROLL SPY (Zvýrazňování v menu při scrollování)
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+    
+    // Zjistíme, která sekce je na obrazovce
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        // Offset -150px, aby se odkaz přepnul trochu dřív, než sekce vyjede úplně nahoru
+        if (pageYOffset >= (sectionTop - 150)) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    // Obarvíme příslušný odkaz
+    navLinks.forEach((link) => {
+        link.classList.remove("active");
+        // Pokud href odkazu obsahuje ID sekce (např #about obsahuje about)
+        if (link.getAttribute("href").includes(current)) {
+            link.classList.add("active");
+        }
+    });
+});

@@ -137,38 +137,133 @@ ul {
 }
 
 /* =========================================
-   5. BOČNÍ NAVIGACE
+   5. NOVÁ NAVIGACE (RESPONZIVNÍ)
    ========================================= */
-.side-nav {
+#navbar {
     position: fixed;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
     display: flex;
-    flex-direction: column;
-    gap: 25px;
-    z-index: 1000;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: #666;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    writing-mode: vertical-rl;
+    justify-content: space-between; /* Logo vlevo, menu vpravo */
+    align-items: center;
+    z-index: 1000; /* Nad vším ostatním */
+    background: rgba(26, 26, 26, 0.8); /* Jemně průhledná černá */
+    backdrop-filter: blur(10px); /* Rozmazání pozadí pod lištou */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
-    padding: 10px 0;
-    border-right: 2px solid transparent;
 }
 
-.nav-item:hover, .nav-item.active {
-    color: var(--accent-hover);
-    border-right: 2px solid var(--accent-hover);
+/* Logo vlevo */
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-@media (max-width: 1100px) {
-    .side-nav { display: none; }
+/* Seznam odkazů */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Mezery mezi odkazy */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+/* Efekt po najetí */
+.nav-link:hover {
+    color: var(--text-main);
+}
+
+/* AKTIVNÍ STAV (Zvýraznění sekce) */
+.nav-link.active {
+    color: var(--accent); /* Zmodrá */
+}
+
+/* Podtržítko pro aktivní stav */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+/* Hamburger (skrytý na PC) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-main);
+}
+
+/* --- MOBILNÍ VERZE (max-width: 768px) --- */
+@media (max-width: 768px) {
+    #navbar {
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: block; /* Ukázat hamburger */
+    }
+
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Schované vlevo mimo obrazovku */
+        top: 60px; /* Pod lištou */
+        flex-direction: column;
+        background-color: #1a1a1a;
+        width: 100%;
+        height: 100vh; /* Přes celou výšku */
+        text-align: center;
+        transition: 0.3s;
+        padding-top: 50px;
+        gap: 40px;
+        border-right: 1px solid var(--accent);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Vysunout */
+    }
+    
+    .nav-link {
+        font-size: 24px; /* Větší písmo na mobilu */
+    }
+}
+
+/* Světlý režim - úpravy pozadí */
+body.light-mode #navbar {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+body.light-mode .nav-menu {
+    background-color: #f4f4f4;
 }
 
 /* =========================================
@@ -347,6 +442,7 @@ footer#contact {
 /* =========================================
    10. MODÁLNÍ OKNO (ZOOM) - VYLEPŠENO
    ========================================= */
+/* Kontejner (černé pozadí) - Tady chceme indikovat, že se kliknutím zavírá */
 #modal-image-container {
     display: flex;
     justify-content: center;
@@ -354,35 +450,33 @@ footer#contact {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    cursor: grab; /* Ukáže ruku, že se dá chytat */
+    
+    /* ZMĚNA: Na pozadí bude "pointer" (ukazováček), jako že jde kliknout (zavřít) */
+    /* Nebo dej 'default' (šipka), pokud chceš neutrální kurzor */
+    cursor: pointer; 
 }
 
-#modal-image-container.grabbing {
-    cursor: grabbing; /* Sevřená ruka při držení */
-}
-
+/* Samotný obrázek - Tady chceme indikovat, že se dá chytit */
 #modalImg {
     transform-origin: center center; 
-    
-    /* ZMĚNA 1: Linear je lepší pro drag&drop (neplave to) */
     transition: transform 0.1s linear; 
-    
-    /* ZMĚNA 2: Necháme kousek místa od kraje (vypadá to profesionálněji) */
     max-width: 90%;
     max-height: 90%;
-    
     width: auto;
     height: auto;
     object-fit: contain;
     display: block;
-    
-    /* ZMĚNA 3: Stín pod dokumentem a jemný rámeček */
     box-shadow: 0 0 50px rgba(0,0,0,0.8);
     border: 1px solid rgba(255,255,255,0.1);
+    
+    /* ZMĚNA: Ruka pro posouvání patří jen na obrázek */
+    cursor: grab; 
 }
 
-#modalLoader {
-    pointer-events: none;
+/* Když obrázek držíme (táhneme), kurzor se změní všude */
+#modal-image-container.grabbing, 
+#modal-image-container.grabbing #modalImg {
+    cursor: grabbing; 
 }
 /* =========================================
    STYLY PRO VYČIŠTĚNÉ HTML (Timeline, Header, Projects)
@@ -674,4 +768,133 @@ body.light-mode #flashlight {
     opacity: 1;
     visibility: visible;
     pointer-events: all;
+}
+/* =========================================
+   17. NOVÁ NAVIGACE (RESPONZIVNÍ)
+   ========================================= */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between; /* Logo vlevo, menu vpravo */
+    align-items: center;
+    z-index: 1000; /* Nad vším ostatním */
+    background: rgba(26, 26, 26, 0.8); /* Jemně průhledná černá */
+    backdrop-filter: blur(10px); /* Rozmazání pozadí pod lištou */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Logo vlevo */
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Seznam odkazů */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Mezery mezi odkazy */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s;
+    position: relative;
+}
+
+/* Efekt po najetí */
+.nav-link:hover {
+    color: var(--text-main);
+}
+
+/* AKTIVNÍ STAV (Zvýraznění sekce) */
+.nav-link.active {
+    color: var(--accent); /* Zmodrá */
+}
+
+/* Podtržítko pro aktivní stav */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+/* Hamburger (skrytý na PC) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-main);
+}
+
+/* --- MOBILNÍ VERZE (max-width: 768px) --- */
+@media (max-width: 768px) {
+    #navbar {
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: block; /* Ukázat hamburger */
+    }
+
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Schované vlevo mimo obrazovku */
+        top: 60px; /* Pod lištou */
+        flex-direction: column;
+        background-color: #1a1a1a;
+        width: 100%;
+        height: 100vh; /* Přes celou výšku */
+        text-align: center;
+        transition: 0.3s;
+        padding-top: 50px;
+        gap: 40px;
+        border-right: 1px solid var(--accent);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Vysunout */
+    }
+    
+    .nav-link {
+        font-size: 24px; /* Větší písmo na mobilu */
+    }
+}
+
+/* Světlý režim - úpravy pozadí */
+body.light-mode #navbar {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+body.light-mode .nav-menu {
+    background-color: #f4f4f4;
 }
