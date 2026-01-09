@@ -333,3 +333,15 @@ if (flashlight) {
         flashlight.style.setProperty('--y', y + 'px');
     });
 }
+/* =========================================
+   8. BACK TO TOP (Logika zobrazení)
+   ========================================= */
+const toTopBtn = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) { // Když sjedeme o 500px dolů
+        toTopBtn.classList.add('visible');
+    } else {
+        toTopBtn.classList.remove('visible');
+    }
+});

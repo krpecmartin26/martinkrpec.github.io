@@ -528,11 +528,10 @@ body.light-mode #flashlight {
     /* Varianta A: Vypnout */
     /* opacity: 0; */
 
-    /* Varianta B: Jemná šedá záře (decentní) */
     background: radial-gradient(
         600px circle at var(--x, 50%) var(--y, 50%), 
-        rgba(0, 0, 0, 0.05), 
-        transparent 40%
+        rgba(0, 98, 255, 0.15),  /* Modrá s 15% viditelností */
+        transparent 50%
     );
 }
 /* =========================================
@@ -555,4 +554,80 @@ body.light-mode #flashlight {
 .reveal.show {
     opacity: 1;               /* Plně viditelné */
     transform: translateY(0); /* Vrátí se na původní místo */
+}
+
+/* =========================================
+   14. TYPEWRITER EFEKT
+   ========================================= */
+.typewriter {
+    display: inline-block;
+    overflow: hidden; /* Schová text, který se ještě "nenapsal" */
+    border-right: 3px solid var(--accent); /* Kurzor */
+    white-space: nowrap; /* Text musí být na jednom řádku */
+    margin: 0 auto;
+    letter-spacing: 3px;
+    width: 0; /* Začínáme s nulovou šířkou */
+    animation: 
+        typing 3.5s steps(40, end) forwards, /* Efekt psaní */
+        blink-caret .75s step-end infinite; /* Blikání kurzoru */
+    animation-delay: 1.5s; /* Počkáme, až se dokreslí logo (M K) */
+}
+
+/* Animace psaní - roztahuje šířku elementu */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100%; } 
+}
+
+/* Animace blikání kurzoru */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent); }
+}
+
+/* Na mobilu musíme efekt vypnout, jinak se text nevejde na řádek */
+@media (max-width: 600px) {
+    .typewriter {
+        width: 100%; /* Zobrazit hned */
+        border-right: none; /* Bez kurzoru */
+        animation: none; /* Bez animace */
+        white-space: normal; /* Povolit zalamování */
+    }
+}
+/* =========================================
+   15. BACK TO TOP BUTTON
+   ========================================= */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: var(--bg-card);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    
+    opacity: 0; /* Schované */
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#back-to-top:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-5px);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
 }
