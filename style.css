@@ -557,51 +557,63 @@ body.light-mode #flashlight {
 }
 
 /* =========================================
-   14. TYPEWRITER EFEKT (HEZKÝ FONT + OPRAVA)
+   14. TYPEWRITER EFEKT (FINÁLNÍ OPRAVA - SKRYTÍ KURZORU)
    ========================================= */
 .typewriter {
     display: inline-block;
     overflow: hidden;
-    border-right: 3px solid var(--accent); /* Kurzor */
+    /* Kurzor je na začátku viditelný */
+    border-right: 3px solid var(--accent); 
     white-space: nowrap;
     margin: 0 auto;
     letter-spacing: 2px;
     
-    /* ZMĚNA 1: Použijeme tvůj normální hezký font */
+    /* Hezký font */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     
-    /* ZMĚNA 2: Odhadneme šířku v pixelech (změřil jsem to pro tvůj text) */
+    /* Odhadnutá šířka */
     width: 0;
-    max-width: 420px; /* Cílová šířka textu */
+    max-width: 420px;
     
-    /* Animace */
+    /* Na začátku neviditelné */
+    opacity: 0; 
+
+    /* --- KOMBINACE TŘÍ ANIMACÍ --- */
     animation: 
+        /* 1. Psaní textu (trvá 3.5s) */
         typing 3.5s steps(40, end) forwards, 
-        blink-caret .75s step-end infinite;
-    
-    animation-delay: 1.5s;
-    opacity: 0;
+        
+        /* 2. Blikání kurzoru (běží nekonečně) */
+        blink-caret .75s step-end infinite,
+        
+        /* 3. NOVÉ: Skrytí kurzoru (provede se okamžitě po zpoždění) */
+        hide-caret 0s linear forwards;
+
+    /* --- ČASOVÁNÍ --- */
+    /* Vše začne po 1.5s (čekání na logo) */
+    /* Animace hide-caret musí začít až po dopsání: 1.5s + 3.5s = 5s */
+    animation-delay: 1.5s, 1.5s, 5s;
 }
 
+/* 1. Animace psaní */
 @keyframes typing {
-    from { 
-        width: 0; 
-        opacity: 1;
-    }
-    to { 
-        width: 100%; /* Roztáhne se na max-width */
-        opacity: 1;
-    }
+    from { width: 0; opacity: 1; }
+    to   { width: 100%; opacity: 1; }
 }
 
+/* 2. Animace blikání (klasická) */
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: var(--accent); }
-    
-    /* ZMĚNA 3: Na konci animace (100%) kurzor zmizí */
-    90% { border-color: var(--accent); } 
-    100% { border-color: transparent; } 
+    50%      { border-color: var(--accent); }
+}
+
+/* 3. NOVÉ: Animace, která natvrdo skryje kurzor */
+@keyframes hide-caret {
+    to { 
+        border-right-color: transparent; /* Zprůhlední barvu */
+        border-right-width: 0; /* Pro jistotu zruší i šířku */
+    }
 }
 
 /* Mobilní verze - vypnuto */
