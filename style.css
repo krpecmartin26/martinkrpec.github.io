@@ -557,41 +557,63 @@ body.light-mode #flashlight {
 }
 
 /* =========================================
-   14. TYPEWRITER EFEKT
+   14. TYPEWRITER EFEKT (HEZKÝ FONT + OPRAVA)
    ========================================= */
 .typewriter {
     display: inline-block;
-    overflow: hidden; /* Schová text, který se ještě "nenapsal" */
+    overflow: hidden;
     border-right: 3px solid var(--accent); /* Kurzor */
-    white-space: nowrap; /* Text musí být na jednom řádku */
+    white-space: nowrap;
     margin: 0 auto;
-    letter-spacing: 3px;
-    width: 0; /* Začínáme s nulovou šířkou */
+    letter-spacing: 2px;
+    
+    /* ZMĚNA 1: Použijeme tvůj normální hezký font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    
+    /* ZMĚNA 2: Odhadneme šířku v pixelech (změřil jsem to pro tvůj text) */
+    width: 0;
+    max-width: 420px; /* Cílová šířka textu */
+    
+    /* Animace */
     animation: 
-        typing 3.5s steps(40, end) forwards, /* Efekt psaní */
-        blink-caret .75s step-end infinite; /* Blikání kurzoru */
-    animation-delay: 1.5s; /* Počkáme, až se dokreslí logo (M K) */
+        typing 3.5s steps(40, end) forwards, 
+        blink-caret .75s step-end infinite;
+    
+    animation-delay: 1.5s;
+    opacity: 0;
 }
 
-/* Animace psaní - roztahuje šířku elementu */
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100%; } 
+    from { 
+        width: 0; 
+        opacity: 1;
+    }
+    to { 
+        width: 100%; /* Roztáhne se na max-width */
+        opacity: 1;
+    }
 }
 
-/* Animace blikání kurzoru */
 @keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: var(--accent); }
+    
+    /* ZMĚNA 3: Na konci animace (100%) kurzor zmizí */
+    90% { border-color: var(--accent); } 
+    100% { border-color: transparent; } 
 }
 
-/* Na mobilu musíme efekt vypnout, jinak se text nevejde na řádek */
+/* Mobilní verze - vypnuto */
 @media (max-width: 600px) {
     .typewriter {
-        width: 100%; /* Zobrazit hned */
-        border-right: none; /* Bez kurzoru */
-        animation: none; /* Bez animace */
-        white-space: normal; /* Povolit zalamování */
+        width: auto;
+        border-right: none;
+        animation: none;
+        white-space: normal;
+        opacity: 1;
+        letter-spacing: 1px;
+        max-width: none;
     }
 }
 /* =========================================
