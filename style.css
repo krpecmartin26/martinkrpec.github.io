@@ -303,72 +303,88 @@ body.light-mode .main-header {
     transition: all 0.3s ease-in-out;
 }
 
-/* --- 6. MOBILNÍ VERZE (RESPONZIVITA) --- */
+/* --- MOBILNÍ VERZE (OPRAVENÝ VZHLED) --- */
 @media (max-width: 768px) {
     #navbar {
         padding: 0 20px;
-        height: 60px;
     }
 
-    /* Hamburger se ukáže */
     .hamburger {
         display: block;
+        z-index: 1002;
     }
 
-    /* Animace Hamburgeru na Křížek */
+    /* Tlačítko měsíce/slunce */
+    .theme-btn-nav {
+        z-index: 1002;
+        border: none;
+        font-size: 22px;
+        margin-left: 0;
+    }
+
+    /* Animace Hamburgeru */
     .hamburger.active .bar:nth-child(2) { opacity: 0; }
     .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* MENU - MOBILNÍ VZHLED */
+    /* KONTEJNER PRO MENU */
     .nav-menu {
-        position: fixed; /* Vytrhneme z lišty */
-        left: 100%;      /* Schováme doprava mimo obrazovku */
+        position: fixed;
+        left: 100%; 
         top: 0;
         
+        /* Flexbox pro centrování */
         flex-direction: column;
-        justify-content: flex-start; /* Odkazy začnou nahoře */
+        justify-content: flex-start; /* Začít nahoře */
         align-items: center;
         
-        background-color: #1a1a1a; /* Tmavé pozadí přes celý displej */
+        background-color: #111; /* Čistě černé pozadí */
         width: 100%;
         height: 100vh;
         
         padding-top: 100px; /* Aby první odkaz nebyl pod lištou */
-        margin: 0; /* Reset marginů z PC verze */
-        gap: 20px;
+        gap: 20px; /* Menší mezery mezi odkazy */
         
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Plynulý výjezd */
-        z-index: 2001; /* Pod hamburgerem, ale nad vším ostatním */
+        transition: 0.4s ease;
+        z-index: 1001;
     }
 
-    /* Třída .active (přidá ji Javascript) menu vysune */
     .nav-menu.active {
-        left: 0; 
-        box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+        left: 0;
     }
     
-    /* Větší tlačítka pro prsty */
-    .nav-link {
-        font-size: 18px;
-        width: 80%; 
+    /* ODKAZY V MENU - ZRUŠENÍ "KRABIC" */
+    .nav-menu li {
+        width: 100%; /* Aby se dalo kliknout po celé šířce */
         text-align: center;
-        padding: 15px;
-        border-radius: 12px; 
-        background: rgba(255,255,255,0.05);
+    }
+
+    .nav-link {
         display: block;
+        font-size: 20px;
+        color: #fff !important; /* Vždy bílá */
+        background: transparent !important; /* Žádné šedé pozadí! */
+        padding: 15px 0;
+        width: 100%;
+        border-radius: 0; /* Žádné kulaté rohy */
+    }
+
+    /* Aktivní odkaz na mobilu */
+    .nav-link.active {
+        color: var(--accent) !important; /* Zmodrá text */
+        background: rgba(255, 255, 255, 0.05) !important; /* Jemňoučké podbarvení */
     }
     
-    .nav-link:hover, .nav-link.active {
-        background: var(--accent);
-        transform: none; 
+    /* Zrušíme podtržítko z PC verze, na mobilu to nevypadá dobře */
+    .nav-link.active::after {
+        display: none;
     }
-    
-    /* Header úprava pro mobil */
-    header, .main-header {
-        padding-top: 130px;
-        justify-content: flex-start;
-    }
+}
+section, 
+h1, h2, h3, 
+div[id] { 
+    /* 70px má lišta + 20px dýchací prostor */
+    scroll-margin-top: 90px; 
 }
 /* =========================================
    6. SKILL TAGS
