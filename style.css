@@ -772,6 +772,22 @@ strong {
     transition: transform 0.3s;
 }
 .focus-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px var(--shadow); }
+
+/* --- Nastavení velikosti a barev ikon --- */
+.icon-blue { font-size: 28px; color: #005f87; margin-bottom: 20px; }
+.icon-purple { font-size: 28px; color: #d946d9; margin-bottom: 20px; }
+.icon-green { font-size: 28px; color: #009900; margin-bottom: 20px; }
+.icon-orange { font-size: 28px; color: #f39c12; margin-bottom: 20px; } /* Přidána oranžová */
+.icon-red { font-size: 28px; color: #e74c3c; margin-bottom: 20px; } /* Přidána červená */
+
+/* --- Nastavení barev nadpisů --- */
+.title-blue { margin: 0 0 10px 0; color: #3498db; font-size: 1.3em; }
+.title-purple { margin: 0 0 10px 0; color: #d946d9; font-size: 1.3em; }
+.title-green { margin: 0 0 10px 0; color: #4cd964; font-size: 1.3em; }
+.title-orange { margin: 0 0 10px 0; color: #f39c12; font-size: 1.3em; } /* Přidána oranžová */
+.title-red { margin: 0 0 10px 0; color: #e74c3c; font-size: 1.3em; } /* Přidána červená */
+
+.focus-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px var(--shadow); }
 .icon-blue { font-size: 28px; color: #005f87; margin-bottom: 20px; }
 .icon-purple { font-size: 28px; color: #d946d9; margin-bottom: 20px; }
 .icon-green { font-size: 28px; color: #009900; margin-bottom: 20px; }
