@@ -39,6 +39,17 @@ html, body {
     --border: #333;
     --shadow: rgba(0,0,0,0.5);
 }
+/* Dynamické zobrazení pro Tech Stack a seznamy */
+.tech-stack {
+    font-size: 0.9em;
+    opacity: 0.8; /* Přizpůsobí se světlému i tmavému režimu */
+    margin-bottom: 15px; 
+}
+
+.duties {
+    margin-top: 10px;
+    opacity: 0.9;
+}
 
 /* --- SVĚTLÝ REŽIM (MODERNÍ TECH - BAREVNĚJŠÍ) --- */
 body.light-mode {
